@@ -1,0 +1,243 @@
+{
+  "title": "ESC 2024 Atrial Fibrillation Management CDS Rules",
+  "title_zh": "ESC 2024 心房顫動管理指南 - 臨床決策支援規則",
+  "description": "Recommendations for stroke prevention and bleeding risk assessment in atrial fibrillation based on ESC 2024 Guidelines",
+  "source": "2024 ESC Guidelines for the management of atrial fibrillation",
+  "reference": "European Heart Journal (2024)",
+  "total_recommendations": 3,
+  "scores": {
+    "CHA2DS2_VA": {
+      "name": "CHA₂DS₂-VA",
+      "name_zh": "CHA₂DS₂-VA 評分",
+      "description": "Stroke risk assessment score for atrial fibrillation (2024 ESC - sex removed)",
+      "max_score": 8,
+      "components": [
+        {
+          "id": "C",
+          "name": "Congestive heart failure",
+          "name_zh": "心衰竭",
+          "points": 1,
+          "criteria": ["heart failure", "HF", "CHF", "心衰竭", "心臟衰竭", "left ventricular dysfunction"]
+        },
+        {
+          "id": "H",
+          "name": "Hypertension",
+          "name_zh": "高血壓",
+          "points": 1,
+          "criteria": ["hypertension", "HTN", "高血壓"]
+        },
+        {
+          "id": "A2",
+          "name": "Age ≥75 years",
+          "name_zh": "年齡 ≥75 歲",
+          "points": 2,
+          "age_threshold": 75
+        },
+        {
+          "id": "D",
+          "name": "Diabetes mellitus",
+          "name_zh": "糖尿病",
+          "points": 1,
+          "criteria": ["diabetes", "DM", "糖尿病"]
+        },
+        {
+          "id": "S2",
+          "name": "Stroke/TIA/thromboembolism",
+          "name_zh": "中風/TIA/血栓栓塞病史",
+          "points": 2,
+          "criteria": ["stroke", "TIA", "transient ischemic attack", "thromboembolism", "cerebrovascular accident", "CVA", "中風", "腦中風", "暫時性腦缺血"]
+        },
+        {
+          "id": "V",
+          "name": "Vascular disease",
+          "name_zh": "血管疾病",
+          "points": 1,
+          "criteria": ["myocardial infarction", "MI", "peripheral artery disease", "PAD", "aortic plaque", "心肌梗塞", "周邊動脈疾病", "冠心病", "coronary artery disease", "CAD"]
+        },
+        {
+          "id": "A",
+          "name": "Age 65-74 years",
+          "name_zh": "年齡 65-74 歲",
+          "points": 1,
+          "age_range": [65, 74]
+        }
+      ],
+      "recommendations": {
+        "0": {
+          "action": "no_anticoagulation",
+          "class": "III",
+          "text": "No anticoagulation therapy needed",
+          "text_zh": "不需抗凝血治療"
+        },
+        "1": {
+          "action": "consider_anticoagulation",
+          "class": "IIa",
+          "text": "Anticoagulation should be considered",
+          "text_zh": "應考慮抗凝血治療"
+        },
+        ">=2": {
+          "action": "recommend_anticoagulation",
+          "class": "I",
+          "text": "Anticoagulation is recommended",
+          "text_zh": "建議抗凝血治療"
+        }
+      }
+    },
+    "HAS_BLED": {
+      "name": "HAS-BLED",
+      "name_zh": "HAS-BLED 評分",
+      "description": "Major bleeding risk assessment score",
+      "max_score": 9,
+      "components": [
+        {
+          "id": "H",
+          "name": "Hypertension (uncontrolled, >160 mmHg systolic)",
+          "name_zh": "高血壓 (未控制，收縮壓 >160 mmHg)",
+          "points": 1,
+          "sbp_threshold": 160,
+          "requires_measurement": true
+        },
+        {
+          "id": "A_renal",
+          "name": "Abnormal renal function",
+          "name_zh": "腎功能異常",
+          "points": 1,
+          "criteria": ["dialysis", "transplant", "CKD stage 4", "CKD stage 5", "洗腎", "透析", "腎移植"],
+          "creatinine_threshold": 2.26
+        },
+        {
+          "id": "A_liver",
+          "name": "Abnormal liver function",
+          "name_zh": "肝功能異常",
+          "points": 1,
+          "criteria": ["cirrhosis", "liver failure", "肝硬化", "肝衰竭"],
+          "requires_labs": true
+        },
+        {
+          "id": "S",
+          "name": "Stroke history",
+          "name_zh": "中風病史",
+          "points": 1,
+          "criteria": ["stroke", "CVA", "中風", "腦中風"]
+        },
+        {
+          "id": "B",
+          "name": "Bleeding history or predisposition",
+          "name_zh": "出血病史或傾向",
+          "points": 1,
+          "criteria": ["bleeding", "hemorrhage", "GI bleed", "intracranial hemorrhage", "出血", "消化道出血", "腦出血"]
+        },
+        {
+          "id": "L",
+          "name": "Labile INR",
+          "name_zh": "INR 不穩定",
+          "points": 1,
+          "note": "Only applicable if on warfarin, TTR <60%",
+          "requires_warfarin": true
+        },
+        {
+          "id": "E",
+          "name": "Elderly (>65 years)",
+          "name_zh": "年齡 >65 歲",
+          "points": 1,
+          "age_threshold": 65
+        },
+        {
+          "id": "D_drugs",
+          "name": "Drugs (antiplatelet, NSAIDs)",
+          "name_zh": "藥物 (抗血小板、NSAIDs)",
+          "points": 1,
+          "medication_keywords": ["aspirin", "clopidogrel", "ticagrelor", "prasugrel", "NSAID", "ibuprofen", "naproxen", "diclofenac", "阿斯匹靈", "保栓通"]
+        },
+        {
+          "id": "D_alcohol",
+          "name": "Alcohol use (≥8 drinks/week)",
+          "name_zh": "酒精使用 (每週 ≥8 杯)",
+          "points": 1,
+          "requires_history": true
+        }
+      ],
+      "interpretation": {
+        "low": {
+          "range": [0, 2],
+          "text": "Low bleeding risk",
+          "text_zh": "低出血風險"
+        },
+        "high": {
+          "range": [3, 9],
+          "text": "High bleeding risk - requires careful monitoring",
+          "text_zh": "高出血風險 - 需密切監測"
+        }
+      }
+    }
+  },
+  "anticoagulants": {
+    "NOAC": {
+      "name": "Non-vitamin K oral anticoagulants",
+      "name_zh": "新型口服抗凝血劑",
+      "medications": [
+        { "generic": "dabigatran", "brand": ["Pradaxa", "普栓達"] },
+        { "generic": "rivaroxaban", "brand": ["Xarelto", "拜瑞妥"] },
+        { "generic": "apixaban", "brand": ["Eliquis", "艾必克凝"] },
+        { "generic": "edoxaban", "brand": ["Lixiana", "里先安", "Savaysa"] }
+      ]
+    },
+    "VKA": {
+      "name": "Vitamin K antagonist",
+      "name_zh": "維生素K拮抗劑",
+      "medications": [
+        { "generic": "warfarin", "brand": ["Coumadin", "可邁丁", "華法林"] }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "section": 1,
+      "title": "Stroke Risk Assessment",
+      "title_zh": "中風風險評估",
+      "recommendations": [
+        {
+          "id": "AF1.1",
+          "text": "In patients with AF, assessment of stroke risk using the CHA₂DS₂-VA score is recommended to guide antithrombotic therapy decisions.",
+          "text_zh": "心房顫動患者建議使用 CHA₂DS₂-VA 評分評估中風風險，以指導抗血栓治療決策。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "stroke_risk",
+          "action": "calculate_cha2ds2va"
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "title": "Bleeding Risk Assessment",
+      "title_zh": "出血風險評估",
+      "recommendations": [
+        {
+          "id": "AF2.1",
+          "text": "The HAS-BLED score should be considered to identify modifiable bleeding risk factors and patients at high bleeding risk (HAS-BLED ≥3) for early and more frequent follow-up.",
+          "text_zh": "應考慮使用 HAS-BLED 評分識別可調整的出血風險因子，以及高出血風險患者 (HAS-BLED ≥3)，進行早期及更頻繁的追蹤。",
+          "evidence_level": "B",
+          "class": "IIa",
+          "category": "bleeding_risk",
+          "action": "calculate_hasbled"
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "title": "Anticoagulation Therapy",
+      "title_zh": "抗凝血治療",
+      "recommendations": [
+        {
+          "id": "AF3.1",
+          "text": "DOACs are recommended in preference to VKAs in DOAC-eligible patients with AF, except for those with mechanical heart valves or moderate-to-severe mitral stenosis.",
+          "text_zh": "除機械瓣膜或中重度二尖瓣狹窄患者外，符合條件的心房顫動患者建議優先使用 DOAC 而非 VKA。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "anticoagulation",
+          "action": "recommend_doac"
+        }
+      ]
+    }
+  ]
+}

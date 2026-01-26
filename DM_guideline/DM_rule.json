@@ -1,0 +1,1198 @@
+{
+  "title": "ADA Standards of Care in Diabetes—2026 Clinical Decision Support Rules",
+  "title_zh": "ADA 2026 糖尿病照護標準 - 臨床決策支援規則",
+  "description": "Filtered recommendations suitable for CDS implementation via FHIR data",
+  "source": "ADA Standards of Care in Diabetes—2026",
+  "filter_criteria": "Recommendations that can be automatically determined via FHIR data (labs, medications, diagnoses)",
+  "total_recommendations": 113,
+  "sections": [
+    {
+      "section": 3,
+      "title": "Prevention or Delay of Diabetes and Associated Comorbidities",
+      "title_zh": "糖尿病及相關共病之預防或延緩",
+      "recommendations": [
+        {
+          "id": "3.7",
+          "text": "Metformin for the prevention of type 2 diabetes should be considered in adults at high risk of type 2 diabetes, as typified by the Diabetes Prevention Program, especially those aged 25–59 years with BMI ≥35 kg/m², higher fasting plasma glucose (e.g., ≥110 mg/dL [≥6 mmol/L]), and higher A1C (e.g., ≥6.0% [≥42 mmol/mol]), and in individuals with prior gestational diabetes mellitus.",
+          "text_zh": "Metformin預防第二型糖尿病應考慮用於高風險成人（如糖尿病預防計畫所定義），特別是25-59歲、BMI≥35 kg/m²、空腹血糖較高（如≥110 mg/dL）、A1C較高（如≥6.0%）者，以及曾有妊娠糖尿病病史者。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "high_risk_prediabetes",
+          "action": "consider_metformin",
+          "criteria": {
+            "age_range": "25-59",
+            "bmi_threshold": 35,
+            "fpg_threshold_mg_dl": 110,
+            "a1c_threshold_percent": 6.0,
+            "gdm_history": true
+          }
+        },
+        {
+          "id": "3.10",
+          "text": "Consider periodic assessment of vitamin B12 levels in individuals receiving long-term metformin therapy, especially in those with anemia or peripheral neuropathy.",
+          "text_zh": "長期使用metformin者應考慮定期評估維生素B12濃度，特別是有貧血或周邊神經病變者。",
+          "evidence_level": "B",
+          "category": "monitoring",
+          "population": "long_term_metformin",
+          "action": "monitor_b12",
+          "risk_factors": ["anemia", "peripheral_neuropathy"]
+        },
+        {
+          "id": "3.12",
+          "text": "Statin therapy may increase the risk of type 2 diabetes in people at high risk of developing type 2 diabetes. In such individuals, glucose status should be monitored regularly and diabetes prevention approaches reinforced. It is not recommended that statins be avoided or discontinued for this adverse effect.",
+          "text_zh": "Statin治療可能增加高風險族群發展為第二型糖尿病的風險。此類個案應定期監測血糖狀態並加強糖尿病預防措施。不建議因此副作用而避免或停用statin。",
+          "evidence_level": "B",
+          "category": "cardiovascular",
+          "population": "high_risk_on_statin",
+          "action": "monitor_glucose_continue_statin"
+        },
+        {
+          "id": "3.13a",
+          "text": "In people with a history of stroke and evidence of insulin resistance and prediabetes, pioglitazone may be considered to lower the risk of stroke or myocardial infarction. However, this benefit needs to be balanced with the increased risk of weight gain, edema, and fractures.",
+          "text_zh": "有中風病史且有胰島素阻抗及糖尿病前期證據者，可考慮使用pioglitazone以降低中風或心肌梗塞風險。然而，此益處需與體重增加、水腫及骨折風險增加相權衡。",
+          "evidence_level": "A",
+          "category": "cardiovascular",
+          "population": "stroke_history_prediabetes",
+          "action": "consider_pioglitazone",
+          "risks": ["weight_gain", "edema", "fractures"]
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "title": "Comprehensive Medical Evaluation and Assessment of Comorbidities",
+      "title_zh": "綜合醫學評估與共病評估",
+      "recommendations": [
+        {
+          "id": "4.10",
+          "text": "Consider the potential adverse impact on skeletal health when selecting pharmacological options to lower glucose levels in people with diabetes. Avoiding medications with a known association with higher fracture risk (e.g., thiazolidinediones and sulfonylureas) is recommended, particularly for those at elevated risk for fractures.",
+          "text_zh": "選擇降血糖藥物時應考慮對骨骼健康的潛在不良影響。建議避免使用已知與較高骨折風險相關的藥物（如thiazolidinediones和sulfonylureas），特別是對骨折風險較高者。",
+          "evidence_level": "B",
+          "category": "bone_health",
+          "population": "diabetes_fracture_risk",
+          "action": "avoid_fracture_risk_medications",
+          "medications_to_avoid": ["thiazolidinediones", "sulfonylureas"]
+        },
+        {
+          "id": "4.22a",
+          "text": "Screen adults with type 2 diabetes or with prediabetes, particularly those with obesity or other cardiometabolic risk factors or established cardiovascular disease, for their risk of having or developing cirrhosis related to metabolic dysfunction–associated steatohepatitis (MASH) using a calculated fibrosis-4 index (FIB-4), even if they have normal liver enzymes.",
+          "text_zh": "對第二型糖尿病或糖尿病前期成人，特別是肥胖、有其他心臟代謝風險因子或已確診心血管疾病者，使用計算的纖維化-4指數（FIB-4）篩檢代謝功能障礙相關脂肪性肝炎（MASH）相關肝硬化的風險，即使肝酵素正常。",
+          "evidence_level": "B",
+          "category": "masld_screening",
+          "population": "type2_diabetes_prediabetes",
+          "action": "screen_mash_with_fib4",
+          "test": "FIB-4"
+        },
+        {
+          "id": "4.22b",
+          "text": "Adults with diabetes or prediabetes with persistently elevated plasma aminotransferase levels for >6 months and low FIB-4 should be evaluated for other causes of liver disease.",
+          "text_zh": "糖尿病或糖尿病前期成人若血漿轉胺酶持續升高超過6個月且FIB-4偏低，應評估其他肝病原因。",
+          "evidence_level": "B",
+          "category": "masld_screening",
+          "population": "diabetes_elevated_alt_low_fib4",
+          "action": "evaluate_other_liver_disease"
+        },
+        {
+          "id": "4.26",
+          "text": "In adults with type 2 diabetes, MASLD, and overweight or obesity, consider using a glucagon-like peptide 1 receptor agonist (GLP-1 RA) with demonstrated benefits in MASH (A) or a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 RA with potential benefits in MASH (B) for the treatment of obesity as an adjunctive therapy to lifestyle interventions for weight loss.",
+          "text_zh": "對有MASLD及過重或肥胖的第二型糖尿病成人，考慮使用已證實對MASH有益的GLP-1受體促效劑(A)或對MASH有潛在益處的雙GIP和GLP-1受體促效劑(B)作為生活方式介入的輔助治療以減重。",
+          "evidence_level": "A",
+          "category": "masld_management",
+          "population": "type2_diabetes_masld_obesity",
+          "action": "consider_glp1ra_or_dual_agonist",
+          "medications": ["GLP-1_RA", "dual_GIP_GLP1_RA"]
+        },
+        {
+          "id": "4.27a",
+          "text": "In adults with type 2 diabetes and biopsy-proven MASH or those at high risk for liver fibrosis (based on noninvasive tests), a GLP-1 RA is preferred for glycemic management due to beneficial effects on MASH (A). Pioglitazone (B) or a dual GIP and GLP-1 RA (B) can be considered for glycemic management due to potential beneficial effects on MASH.",
+          "text_zh": "對切片證實MASH或肝纖維化高風險（基於非侵入性檢測）的第二型糖尿病成人，因對MASH有益，首選GLP-1受體促效劑進行血糖管理(A)。因對MASH有潛在益處，可考慮Pioglitazone(B)或雙GIP和GLP-1受體促效劑(B)進行血糖管理。",
+          "evidence_level": "A",
+          "category": "masld_management",
+          "population": "type2_diabetes_mash",
+          "action": "prefer_glp1ra_for_glycemic_management",
+          "preferred_medications": ["GLP-1_RA"],
+          "alternative_medications": ["pioglitazone", "dual_GIP_GLP1_RA"]
+        },
+        {
+          "id": "4.30a",
+          "text": "In adults with type 2 diabetes and MASLD, use of glucose-lowering therapies other than pioglitazone or GLP-1 RAs may be continued as clinically indicated, but these therapies lack evidence of benefit in MASH.",
+          "text_zh": "對有MASLD的第二型糖尿病成人，pioglitazone或GLP-1受體促效劑以外的降血糖治療可依臨床需要繼續使用，但這些治療缺乏對MASH有益的證據。",
+          "evidence_level": "B",
+          "category": "masld_management",
+          "population": "type2_diabetes_masld",
+          "action": "continue_other_glucose_lowering_no_mash_benefit"
+        },
+        {
+          "id": "4.31a",
+          "text": "Adults with type 2 diabetes and MASLD are at increased cardiovascular risk; therefore, comprehensive management of cardiovascular risk factors is recommended.",
+          "text_zh": "有MASLD的第二型糖尿病成人心血管風險增加；因此建議全面管理心血管風險因子。",
+          "evidence_level": "B",
+          "category": "masld_management",
+          "population": "type2_diabetes_masld",
+          "action": "comprehensive_cv_risk_management"
+        },
+        {
+          "id": "4.31b",
+          "text": "Statin therapy is safe in adults with type 2 diabetes and compensated cirrhosis from MASLD and should be initiated or continued for cardiovascular risk reduction as clinically indicated (B). In people with decompensated cirrhosis, statin therapy should be used with caution, and close monitoring is needed, given limited safety and efficacy data (B).",
+          "text_zh": "Statin治療對有MASLD引起的代償性肝硬化的第二型糖尿病成人是安全的，應依臨床需要啟動或繼續使用以降低心血管風險(B)。對失代償性肝硬化患者，考慮到安全性和有效性數據有限，應謹慎使用statin治療並需密切監測(B)。",
+          "evidence_level": "B",
+          "category": "masld_management",
+          "population": "type2_diabetes_cirrhosis_masld",
+          "action": "statin_therapy_cirrhosis",
+          "compensated_cirrhosis": "safe_continue",
+          "decompensated_cirrhosis": "use_with_caution"
+        }
+      ]
+    },
+    {
+      "section": 6,
+      "title": "Glycemic Goals, Hypoglycemia, and Hyperglycemic Crises",
+      "title_zh": "血糖目標、低血糖與高血糖危機",
+      "recommendations": [
+        {
+          "id": "6.2",
+          "text": "Assess glycemic status at least two times a year, and more frequently (e.g., every 3 months) for individuals not meeting glycemic goals or with recent treatment changes, frequent or severe hypoglycemia or hyperglycemia, or changes in health status, or during periods of rapid growth and development in children and adolescents.",
+          "text_zh": "至少每年評估血糖狀態兩次，對於未達血糖目標、近期治療變更、頻繁或嚴重低/高血糖、健康狀態改變、或兒童及青少年快速生長發育期者，應更頻繁評估（如每3個月）。",
+          "evidence_level": "E",
+          "category": "glycemic_assessment",
+          "action": "monitor_frequency"
+        },
+        {
+          "id": "6.3a",
+          "text": "An A1C goal of <7% (<53 mmol/mol) is appropriate for many nonpregnant adults without severe hypoglycemia or hypoglycemia affecting health or quality of life.",
+          "text_zh": "對於無嚴重低血糖或低血糖影響健康或生活品質的非懷孕成人，A1C目標<7%（<53 mmol/mol）是適當的。",
+          "evidence_level": "A",
+          "category": "glycemic_goals",
+          "population": "nonpregnant_adults",
+          "action": "set_a1c_goal",
+          "target": {
+            "a1c_percent": "<7.0",
+            "a1c_mmol_mol": "<53"
+          }
+        },
+        {
+          "id": "6.3b",
+          "text": "A goal time in range of >70% in people using CGM is appropriate for many nonpregnant adults.",
+          "text_zh": "對於使用CGM的非懷孕成人，目標範圍時間>70%是適當的。",
+          "evidence_level": "B",
+          "category": "glycemic_goals",
+          "population": "nonpregnant_adults_cgm",
+          "action": "set_tir_goal",
+          "target": {
+            "tir_percent": ">70"
+          }
+        },
+        {
+          "id": "6.3c",
+          "text": "A goal percent time <70 mg/dL (<3.9 mmol/L) of <4% (or <1% for older adults) and a goal percent time <54 mg/dL (<3.0 mmol/L) of <1% are recommended in people using CGM to prevent hypoglycemia. Deintensify or modify therapy if these goals are not met.",
+          "text_zh": "使用CGM者，建議低於70 mg/dL的時間<4%（老年人<1%），低於54 mg/dL的時間<1%，以預防低血糖。若未達目標應減弱或調整治療。",
+          "evidence_level": "B",
+          "category": "glycemic_goals",
+          "action": "set_tbr_goal",
+          "target": {
+            "tbr_70_percent": "<4",
+            "tbr_70_percent_older": "<1",
+            "tbr_54_percent": "<1"
+          }
+        },
+        {
+          "id": "6.4",
+          "text": "Lower A1C goals (e.g., <6.5% [<48 mmol/mol]) may be appropriate for individuals with diabetes with good health and function and low treatment risks (e.g., hypoglycemia) and burdens.",
+          "text_zh": "對於健康狀況良好、功能正常且治療風險（如低血糖）和負擔低的糖尿病患者，較低的A1C目標（如<6.5%）可能是適當的。",
+          "evidence_level": "B",
+          "category": "glycemic_goals",
+          "population": "good_health_low_risk",
+          "action": "consider_lower_a1c_goal",
+          "target": {
+            "a1c_percent": "<6.5",
+            "a1c_mmol_mol": "<48"
+          }
+        },
+        {
+          "id": "6.5",
+          "text": "Less stringent glycemic goals may be appropriate for individuals with significant cognitive and/or functional limitations, frailty, or severe comorbidities or where the harms of treatment, including hypoglycemia, are greater than the benefits.",
+          "text_zh": "對於有顯著認知及/或功能限制、衰弱或嚴重共病者，或治療危害（包括低血糖）大於益處者，較寬鬆的血糖目標可能是適當的。",
+          "evidence_level": "B",
+          "category": "glycemic_goals",
+          "population": "frail_complex_comorbidities",
+          "action": "consider_less_stringent_goal"
+        },
+        {
+          "id": "6.6",
+          "text": "Deintensify hypoglycemia-causing medications (insulin, sulfonylureas, or meglitinides), or switch to a medication class with lower hypoglycemia risk, for individuals who are at high risk for hypoglycemia, within individualized glycemic goals.",
+          "text_zh": "對於低血糖高風險者，在個人化血糖目標範圍內，減弱可致低血糖藥物（胰島素、磺脲類或美格列奈類）或轉換為低血糖風險較低的藥物類別。",
+          "evidence_level": "B",
+          "category": "glycemic_goals",
+          "population": "high_hypoglycemia_risk",
+          "action": "deintensify_or_switch_medications",
+          "high_risk_medications": ["insulin", "sulfonylureas", "meglitinides"]
+        },
+        {
+          "id": "6.14",
+          "text": "Use of CGM is beneficial and recommended for individuals at high risk for hypoglycemia.",
+          "text_zh": "CGM的使用對低血糖高風險者有益且建議使用。",
+          "evidence_level": "A",
+          "category": "hypoglycemia_prevention",
+          "population": "high_hypoglycemia_risk",
+          "action": "recommend_cgm"
+        }
+      ]
+    },
+    {
+      "section": 8,
+      "title": "Obesity and Weight Management for the Prevention and Treatment of Diabetes",
+      "title_zh": "糖尿病預防與治療之肥胖與體重管理",
+      "recommendations": [
+        {
+          "id": "8.5",
+          "text": "Provide weight management treatment, aiming for any magnitude of weight loss. Weight loss of 5–7% of baseline weight improves glycemia and other intermediate cardiovascular risk factors. Sustained loss of >10% of body weight usually confers greater benefits, including disease-modifying effects and possible remission of type 2 diabetes and may improve long-term cardiovascular outcomes and mortality.",
+          "text_zh": "提供體重管理治療，以任何程度的減重為目標。減少基準體重的5-7%可改善血糖及其他中間心血管風險因子。持續減重超過10%通常可帶來更大效益，包括疾病修飾效果和可能的第二型糖尿病緩解，並可能改善長期心血管預後和死亡率。",
+          "evidence_level": "A",
+          "category": "treatment_goals",
+          "action": "provide_weight_management",
+          "targets": {
+            "minimum_benefit": "5-7%",
+            "optimal_benefit": ">10%"
+          }
+        },
+        {
+          "id": "8.16",
+          "text": "When choosing glucose-lowering medications for people with type 2 diabetes and overweight or obesity, prioritize medications with beneficial effect on weight.",
+          "text_zh": "為第二型糖尿病合併過重或肥胖者選擇降血糖藥物時，優先選擇對體重有益的藥物。",
+          "evidence_level": "B",
+          "category": "pharmacotherapy",
+          "population": "t2d_overweight_obesity",
+          "action": "prioritize_weight_beneficial_meds"
+        },
+        {
+          "id": "8.18",
+          "text": "In people with diabetes and overweight or obesity, the preferred pharmacotherapy should be a glucagon-like peptide 1 receptor agonist or dual glucose-dependent insulinotropic polypeptide and glucagon-like peptide 1 receptor agonist with greater weight loss efficacy (i.e., semaglutide or tirzepatide), especially considering their added weight-independent benefits.",
+          "text_zh": "對於糖尿病合併過重或肥胖者，首選藥物治療應為具有較佳減重效果的GLP-1受體促效劑或雙GIP/GLP-1受體促效劑（即semaglutide或tirzepatide），特別考量其額外的非體重相關效益。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "diabetes_overweight_obesity",
+          "action": "prefer_glp1_or_dual_agonist",
+          "preferred_agents": ["semaglutide", "tirzepatide"]
+        },
+        {
+          "id": "8.19",
+          "text": "Obesity pharmacotherapy indicated for chronic therapy should be continued beyond reaching weight loss goals to maintain the health benefits, as discontinuation often results in recurrence of weight gain and worsening or reemergence of cardiometabolic risk factors.",
+          "text_zh": "適用於慢性治療的肥胖藥物治療應在達成減重目標後繼續使用以維持健康效益，因為停藥通常會導致體重復胖以及心血管代謝風險因子惡化或重新出現。",
+          "evidence_level": "B",
+          "category": "pharmacotherapy",
+          "action": "continue_pharmacotherapy_long_term"
+        }
+      ]
+    },
+    {
+      "section": 9,
+      "title": "Pharmacologic Approaches to Glycemic Treatment",
+      "title_zh": "血糖治療之藥物方法",
+      "recommendations": [
+        {
+          "id": "9.6",
+          "text": "Consider combination therapy in adults with type 2 diabetes for initial treatment to shorten time to attainment of individualized glycemic goals.",
+          "text_zh": "考慮對第二型糖尿病成人的初始治療使用合併療法，以縮短達成個人化血糖目標的時間。",
+          "evidence_level": "A",
+          "category": "type2_initial_therapy",
+          "population": "type2_diabetes_adults",
+          "action": "consider_combination_therapy"
+        },
+        {
+          "id": "9.7",
+          "text": "In adults with type 2 diabetes and established or high risk of atherosclerotic cardiovascular disease, the treatment plan should include medications with demonstrated benefits to reduce cardiovascular events (e.g., glucagon-like peptide 1 receptor agonist [GLP-1 RA] and/or sodium–glucose cotransporter 2 [SGLT2] inhibitor) for glycemic management and comprehensive cardiovascular risk reduction (irrespective of A1C).",
+          "text_zh": "對於已確診或高風險動脈粥樣硬化心血管疾病的第二型糖尿病成人，治療計畫應包含已證實能減少心血管事件的藥物（如GLP-1受體促效劑和/或SGLT2抑制劑）用於血糖管理和全面心血管風險降低（不論A1C）。",
+          "evidence_level": "A",
+          "category": "type2_cv_protection",
+          "population": "type2_diabetes_ascvd",
+          "action": "use_glp1ra_or_sglt2i",
+          "preferred_medications": ["GLP-1_RA", "SGLT2i"],
+          "indication": "irrespective_of_a1c"
+        },
+        {
+          "id": "9.8",
+          "text": "In adults with type 2 diabetes who have heart failure (HF) (with either reduced or preserved ejection fraction), an SGLT2 inhibitor is recommended for both glycemic management and prevention of HF hospitalizations (irrespective of A1C).",
+          "text_zh": "對於有心衰竭（不論射出分率降低或保留）的第二型糖尿病成人，建議使用SGLT2抑制劑進行血糖管理和預防心衰竭住院（不論A1C）。",
+          "evidence_level": "A",
+          "category": "type2_heart_failure",
+          "population": "type2_diabetes_hf",
+          "action": "recommend_sglt2i",
+          "indication": "irrespective_of_a1c"
+        },
+        {
+          "id": "9.9a",
+          "text": "In adults with type 2 diabetes, obesity, and symptomatic heart failure with preserved ejection fraction (HFpEF), the glucose-lowering treatment plan should include a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 RA with demonstrated benefits for HF-related symptoms and reduction in HF events (irrespective of A1C).",
+          "text_zh": "對於第二型糖尿病、肥胖且有症狀性射出分率保留型心衰竭（HFpEF）的成人，降血糖治療計畫應包含已證實對心衰竭相關症狀有益且能減少心衰竭事件的雙GIP/GLP-1受體促效劑（不論A1C）。",
+          "evidence_level": "A",
+          "category": "type2_hfpef",
+          "population": "type2_diabetes_obesity_hfpef",
+          "action": "use_dual_gip_glp1ra",
+          "indication": "irrespective_of_a1c"
+        },
+        {
+          "id": "9.9b",
+          "text": "In adults with type 2 diabetes, obesity, and symptomatic HFpEF, the glucose-lowering treatment plan should include a GLP-1 RA with demonstrated benefits for HF-related symptoms and/or reduction in HF events (irrespective of A1C).",
+          "text_zh": "對於第二型糖尿病、肥胖且有症狀性HFpEF的成人，降血糖治療計畫應包含已證實對心衰竭相關症狀有益和/或能減少心衰竭事件的GLP-1受體促效劑（不論A1C）。",
+          "evidence_level": ["A", "B"],
+          "category": "type2_hfpef",
+          "population": "type2_diabetes_obesity_hfpef",
+          "action": "use_glp1ra",
+          "indication": "irrespective_of_a1c"
+        },
+        {
+          "id": "9.10",
+          "text": "In adults with type 2 diabetes who have chronic kidney disease (CKD) (with confirmed estimated glomerular filtration rate [eGFR] 20–60 mL/min/1.73 m² and/or albuminuria), an SGLT2 inhibitor or GLP-1 RA with demonstrated benefit in this population should be used for both glycemic management and for slowing progression of CKD and reduction in cardiovascular events (irrespective of A1C). The glycemic benefits of SGLT2 inhibitors are reduced at eGFR <45 mL/min/1.73 m².",
+          "text_zh": "對於有慢性腎臟病（確認eGFR 20-60 mL/min/1.73 m²和/或白蛋白尿）的第二型糖尿病成人，應使用在此族群中已證實有益的SGLT2抑制劑或GLP-1受體促效劑，用於血糖管理、減緩CKD進展和減少心血管事件（不論A1C）。SGLT2抑制劑的血糖效益在eGFR <45 mL/min/1.73 m²時降低。",
+          "evidence_level": "A",
+          "category": "type2_ckd",
+          "population": "type2_diabetes_ckd",
+          "action": "use_sglt2i_or_glp1ra",
+          "criteria": {
+            "egfr_range": [20, 60],
+            "albuminuria": true
+          },
+          "indication": "irrespective_of_a1c"
+        },
+        {
+          "id": "9.11",
+          "text": "In adults with type 2 diabetes and advanced CKD (eGFR <30 mL/min/1.73 m²), a GLP-1 RA is preferred for glycemic management due to lower risk of hypoglycemia and for cardiovascular event reduction. Individuals on dialysis can be safely initiated or continued on GLP-1–based therapy (that is not dependent on kidney clearance) to reduce cardiovascular risk and mortality.",
+          "text_zh": "對於第二型糖尿病合併進階CKD（eGFR <30 mL/min/1.73 m²）的成人，因低血糖風險較低且能減少心血管事件，首選GLP-1受體促效劑進行血糖管理。透析患者可安全啟動或繼續使用GLP-1相關治療（不依賴腎臟清除者）以降低心血管風險和死亡率。",
+          "evidence_level": ["B", "C"],
+          "category": "type2_advanced_ckd",
+          "population": "type2_diabetes_advanced_ckd",
+          "action": "prefer_glp1ra",
+          "criteria": {
+            "egfr_threshold": "<30"
+          }
+        },
+        {
+          "id": "9.12",
+          "text": "In adults with type 2 diabetes, metabolic dysfunction–associated steatotic liver disease (MASLD), and overweight or obesity, consider using a GLP-1 RA with demonstrated benefits in metabolic dysfunction–associated steatohepatitis (MASH) or a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 RA with potential benefits in MASH for glycemic management and as an adjunctive therapy to interventions for weight loss.",
+          "text_zh": "對於第二型糖尿病合併MASLD及過重或肥胖的成人，考慮使用已證實對MASH有益的GLP-1受體促效劑或對MASH有潛在益處的雙GIP/GLP-1受體促效劑，用於血糖管理和作為減重介入的輔助治療。",
+          "evidence_level": ["A", "B"],
+          "category": "type2_masld",
+          "population": "type2_diabetes_masld_obesity",
+          "action": "consider_glp1ra_or_dual_agonist"
+        },
+        {
+          "id": "9.13a",
+          "text": "In adults with type 2 diabetes and biopsy-proven MASH or those at high risk for liver fibrosis (based on noninvasive tests), a GLP-1 RA is preferred for glycemic management due to beneficial effects on MASH. Pioglitazone or a dual GIP and GLP-1 RA can be considered for glycemic management due to potential beneficial effects on MASH.",
+          "text_zh": "對於切片證實MASH或肝纖維化高風險（基於非侵入性檢測）的第二型糖尿病成人，因對MASH有益，首選GLP-1受體促效劑進行血糖管理。因對MASH有潛在益處，可考慮Pioglitazone或雙GIP/GLP-1受體促效劑進行血糖管理。",
+          "evidence_level": ["A", "B"],
+          "category": "type2_mash",
+          "population": "type2_diabetes_mash",
+          "action": "prefer_glp1ra_for_glycemic_management",
+          "preferred_medications": ["GLP-1_RA"],
+          "alternative_medications": ["pioglitazone", "dual_GIP_GLP1_RA"]
+        },
+        {
+          "id": "9.13b",
+          "text": "Combination therapy with pioglitazone plus a GLP-1 RA can be considered for the treatment of hyperglycemia in adults with type 2 diabetes with biopsy-proven MASH or those at high risk of liver fibrosis (identified with noninvasive tests) due to potential beneficial effects on MASH.",
+          "text_zh": "對於切片證實MASH或肝纖維化高風險（非侵入性檢測識別）的第二型糖尿病成人，因對MASH有潛在益處，可考慮pioglitazone加GLP-1受體促效劑的合併治療。",
+          "evidence_level": "B",
+          "category": "type2_mash",
+          "population": "type2_diabetes_mash",
+          "action": "consider_combination_pioglitazone_glp1ra"
+        },
+        {
+          "id": "9.18",
+          "text": "Concurrent use of dipeptidyl peptidase 4 (DPP-4) inhibitors with a GLP-1 RA or a dual GIP and GLP-1 RA is not recommended due to lack of additional glucose lowering beyond that of a GLP-1–based therapy.",
+          "text_zh": "不建議DPP-4抑制劑與GLP-1受體促效劑或雙GIP/GLP-1受體促效劑併用，因為沒有超過GLP-1相關治療的額外降血糖效果。",
+          "evidence_level": "B",
+          "category": "type2_medication_combinations",
+          "population": "type2_diabetes_adults",
+          "action": "avoid_dpp4i_with_glp1_based_therapy"
+        },
+        {
+          "id": "9.20",
+          "text": "In adults with type 2 diabetes, initiation of insulin should be considered regardless of background glucose-lowering therapy or disease duration if symptoms of hyperglycemia are present or when A1C or blood glucose levels are very high (i.e., A1C >10% [>86 mmol/mol] or blood glucose ≥300 mg/dL [≥16.7 mmol/L]).",
+          "text_zh": "對於第二型糖尿病成人，若有高血糖症狀或A1C或血糖非常高（即A1C >10%或血糖≥300 mg/dL），不論背景降血糖治療或疾病病程，應考慮啟動胰島素。",
+          "evidence_level": "E",
+          "category": "type2_insulin_initiation",
+          "population": "type2_diabetes_severe_hyperglycemia",
+          "action": "consider_insulin",
+          "criteria": {
+            "a1c_threshold_percent": ">10",
+            "glucose_threshold_mg_dl": ">=300",
+            "symptoms": "hyperglycemia_symptoms"
+          }
+        },
+        {
+          "id": "9.21",
+          "text": "In adults with type 2 diabetes without severe hyperglycemia or hyperglycemic crisis, GLP-1–based therapy is preferred to insulin for initial or add-on glucose-lowering therapy.",
+          "text_zh": "對於無嚴重高血糖或高血糖危機的第二型糖尿病成人，GLP-1相關治療優於胰島素作為初始或附加降血糖治療。",
+          "evidence_level": "A",
+          "category": "type2_therapy_selection",
+          "population": "type2_diabetes_without_severe_hyperglycemia",
+          "action": "prefer_glp1_based_over_insulin"
+        },
+        {
+          "id": "9.22",
+          "text": "If insulin is used, combination therapy with a GLP-1 RA, including a dual GIP and GLP-1 RA, is recommended for greater glycemic effectiveness as well as beneficial effects on weight and hypoglycemia risk for adults with type 2 diabetes. Insulin dosing should be reassessed upon addition or dose escalation of a GLP-1 RA or dual GIP and GLP-1 RA.",
+          "text_zh": "若使用胰島素，建議與GLP-1受體促效劑（包括雙GIP/GLP-1受體促效劑）合併治療，以獲得更好的血糖效果以及對體重和低血糖風險的有益影響。添加或增加GLP-1受體促效劑或雙GIP/GLP-1受體促效劑劑量時，應重新評估胰島素劑量。",
+          "evidence_level": "A",
+          "category": "type2_insulin_combination",
+          "population": "type2_diabetes_on_insulin",
+          "action": "combine_insulin_with_glp1ra"
+        },
+        {
+          "id": "9.25",
+          "text": "Use of continuous glucose monitoring (CGM) is recommended at diabetes onset and anytime thereafter for adults with diabetes who are on insulin therapy, on noninsulin therapies that can cause hypoglycemia, and on any diabetes treatment where CGM aids in management. The choice of CGM device and method for use should be made based on the individual's circumstances, preferences, and needs.",
+          "text_zh": "建議在糖尿病發病時及之後任何時間使用連續血糖監測（CGM），適用於接受胰島素治療、可能導致低血糖的非胰島素治療，以及CGM有助於管理的任何糖尿病治療的成人。CGM裝置和使用方法的選擇應基於個人情況、偏好和需求。",
+          "evidence_level": ["A", "B", "B"],
+          "category": "diabetes_technology",
+          "population": "diabetes_on_insulin_or_hypoglycemia_risk",
+          "action": "recommend_cgm"
+        }
+      ]
+    },
+    {
+      "section": 10,
+      "title": "Cardiovascular Disease and Risk Management",
+      "title_zh": "心血管疾病與風險管理",
+      "recommendations": [
+        {
+          "id": "10.1",
+          "text": "Blood pressure should be measured at every routine clinical visit, or at least every 6 months. Individuals found to have elevated blood pressure without a diagnosis of hypertension (systolic blood pressure 120–129 mmHg and diastolic blood pressure <80 mmHg) should have blood pressure confirmed using multiple readings, including measurements on a separate day, to diagnose hypertension. Hypertension is defined as a systolic blood pressure ≥130 mmHg or a diastolic blood pressure ≥80 mmHg based on an average of two or more measurements obtained on two or more occasions. Individuals with blood pressure ≥180/110 mmHg and cardiovascular disease could be diagnosed with hypertension at a single visit.",
+          "text_zh": "每次例行門診或至少每6個月應測量血壓。發現血壓升高但未診斷高血壓者（收縮壓120-129 mmHg且舒張壓<80 mmHg），應使用多次測量（包括不同天的測量）確認以診斷高血壓。高血壓定義為收縮壓≥130 mmHg或舒張壓≥80 mmHg，基於兩次或以上場合取得的兩次或以上測量平均值。血壓≥180/110 mmHg且有心血管疾病者可於單次就診時診斷高血壓。",
+          "evidence_level": "A/E",
+          "category": "blood_pressure_screening",
+          "population": "diabetes",
+          "action": "measure_blood_pressure"
+        },
+        {
+          "id": "10.4",
+          "text": "If it can be safely attained, the on-treatment blood pressure goal is <130/80 mmHg; a systolic blood pressure goal <120 mmHg should be encouraged in individuals with high cardiovascular or kidney risk.",
+          "text_zh": "若可安全達成，治療中血壓目標為<130/80 mmHg；心血管或腎臟風險高者應鼓勵收縮壓目標<120 mmHg。",
+          "evidence_level": "A",
+          "category": "blood_pressure_goals",
+          "population": "diabetes_hypertension",
+          "action": "set_bp_target",
+          "targets": {
+            "general_bp_goal": "<130/80 mmHg",
+            "high_risk_systolic_goal": "<120 mmHg"
+          }
+        },
+        {
+          "id": "10.7",
+          "text": "Individuals with confirmed office-based blood pressure ≥150/90 mmHg should, in addition to lifestyle therapy, have prompt initiation and timely titration of two drugs or a single-pill combination of drugs for hypertension that have also been demonstrated to reduce cardiovascular events in people with diabetes.",
+          "text_zh": "確認門診血壓≥150/90 mmHg者，除生活型態治療外，應迅速開始並及時調整兩種藥物或單錠複方降壓藥物，且這些藥物已被證實可減少糖尿病患者心血管事件。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "diabetes_severe_hypertension",
+          "action": "initiate_dual_therapy"
+        },
+        {
+          "id": "10.8",
+          "text": "Treatment for hypertension should include drug classes demonstrated to reduce cardiovascular events in people with diabetes. ACE inhibitors or angiotensin receptor blockers (ARBs) are recommended first-line therapy for hypertension in people with diabetes and albuminuria or coronary artery disease.",
+          "text_zh": "高血壓治療應包括已證實可減少糖尿病患者心血管事件的藥物類別。ACE抑制劑或ARB建議作為糖尿病合併蛋白尿或冠狀動脈疾病者的高血壓第一線治療。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "diabetes_hypertension",
+          "action": "select_antihypertensive",
+          "preferred_agents": ["ACE_inhibitor", "ARB"],
+          "indications": ["albuminuria", "coronary_artery_disease"]
+        },
+        {
+          "id": "10.9",
+          "text": "Multiple-drug therapy is generally required to achieve blood pressure goals. However, avoid any combination of ACE inhibitors, ARBs (including ARBs and neprilysin inhibitors), and direct renin inhibitors.",
+          "text_zh": "達成血壓目標通常需要多重藥物治療。然而，應避免ACE抑制劑、ARB（包括ARB與腦啡肽酶抑制劑）及直接腎素抑制劑的任何組合。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "diabetes_hypertension",
+          "action": "avoid_dual_raas_blockade",
+          "contraindicated_combinations": ["ACE_inhibitor+ARB", "ACE_inhibitor+direct_renin_inhibitor", "ARB+direct_renin_inhibitor"]
+        },
+        {
+          "id": "10.10",
+          "text": "In nonpregnant people with diabetes and hypertension, either an ACE inhibitor or ARB is recommended for those with moderately increased albuminuria (UACR 30–299 mg/g creatinine) and is strongly recommended for those with severely increased albuminuria (UACR ≥300 mg/g creatinine) and/or estimated glomerular filtration rate (eGFR) <60 mL/min/1.73 m² to maximally tolerated dose to prevent the progression of kidney disease and reduce cardiovascular events. If one class is not tolerated, the other should be substituted.",
+          "text_zh": "非懷孕糖尿病合併高血壓者，中度蛋白尿（UACR 30-299 mg/g creatinine）建議使用ACE抑制劑或ARB；重度蛋白尿（UACR ≥300 mg/g creatinine）和/或eGFR <60 mL/min/1.73 m²者強烈建議使用最大耐受劑量以預防腎病進展並減少心血管事件。若其中一類無法耐受，應換用另一類。",
+          "evidence_level": "B/A",
+          "category": "pharmacotherapy",
+          "population": "diabetes_hypertension_albuminuria",
+          "action": "prescribe_acei_or_arb",
+          "criteria": {
+            "moderate_albuminuria_uacr_mg_g": "30-299",
+            "severe_albuminuria_uacr_mg_g": "≥300",
+            "egfr_threshold": "<60 mL/min/1.73 m²"
+          }
+        },
+        {
+          "id": "10.12",
+          "text": "In sexually active individuals of childbearing potential who are not using reliable contraception, avoid ACE inhibitors, ARBs, MRAs, direct renin inhibitors, and neprilysin inhibitors, as they are contraindicated in pregnancy.",
+          "text_zh": "有性行為且未使用可靠避孕的育齡族群，應避免使用ACE抑制劑、ARB、MRA、直接腎素抑制劑及腦啡肽酶抑制劑，因這些藥物在懷孕期間禁忌使用。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "childbearing_potential",
+          "action": "avoid_teratogenic_antihypertensives",
+          "contraindicated_in_pregnancy": ["ACE_inhibitor", "ARB", "MRA", "direct_renin_inhibitor", "neprilysin_inhibitor"]
+        },
+        {
+          "id": "10.13",
+          "text": "Individuals with hypertension who are not meeting blood pressure goals on three classes of antihypertensive medications (including a diuretic) should be considered for MRA therapy.",
+          "text_zh": "使用三類降壓藥物（包括利尿劑）仍未達血壓目標的高血壓患者，應考慮MRA治療。",
+          "evidence_level": "A",
+          "category": "pharmacotherapy",
+          "population": "resistant_hypertension",
+          "action": "consider_mra"
+        },
+        {
+          "id": "10.18",
+          "text": "For people with diabetes aged 40–75 years without ASCVD, use moderate-intensity statin therapy in addition to lifestyle therapy.",
+          "text_zh": "40-75歲無ASCVD的糖尿病患者，除生活型態治療外，應使用中等強度statin治療。",
+          "evidence_level": "A",
+          "category": "statin_primary_prevention",
+          "population": "diabetes_40_75_no_ascvd",
+          "action": "prescribe_moderate_statin"
+        },
+        {
+          "id": "10.19",
+          "text": "For people with diabetes aged 20–39 years with additional ASCVD risk factors, it may be reasonable to initiate statin therapy in addition to lifestyle therapy.",
+          "text_zh": "20-39歲有額外ASCVD風險因子的糖尿病患者，除生活型態治療外，可考慮開始statin治療。",
+          "evidence_level": "C",
+          "category": "statin_primary_prevention",
+          "population": "diabetes_20_39_with_risk_factors",
+          "action": "consider_statin"
+        },
+        {
+          "id": "10.20",
+          "text": "For people with diabetes aged 40–75 years at higher cardiovascular risk, including those with one or more additional ASCVD risk factors, high-intensity statin therapy is recommended to reduce LDL cholesterol by ≥50% of baseline and to obtain an LDL cholesterol goal of <70 mg/dL (<1.8 mmol/L).",
+          "text_zh": "40-75歲心血管風險較高（包括有一個或多個額外ASCVD風險因子）的糖尿病患者，建議使用高強度statin治療，使LDL膽固醇自基線降低≥50%，並達成LDL膽固醇<70 mg/dL的目標。",
+          "evidence_level": "A",
+          "category": "statin_primary_prevention",
+          "population": "diabetes_40_75_high_cv_risk",
+          "action": "prescribe_high_intensity_statin",
+          "targets": {
+            "ldl_reduction_percent": "≥50%",
+            "ldl_goal_mg_dl": "<70"
+          }
+        },
+        {
+          "id": "10.21",
+          "text": "For people with diabetes aged 40–75 years at higher cardiovascular risk, especially those with multiple additional ASCVD risk factors and an LDL cholesterol ≥70 mg/dL (≥1.8 mmol/L), it may be reasonable to add ezetimibe or a proprotein convertase subtilisin/kexin type 9 (PCSK9) inhibitor to maximum tolerated statin therapy.",
+          "text_zh": "40-75歲心血管風險較高的糖尿病患者，尤其是有多個額外ASCVD風險因子且LDL膽固醇≥70 mg/dL者，可考慮在最大耐受statin治療基礎上加用ezetimibe或PCSK9抑制劑。",
+          "evidence_level": "B",
+          "category": "statin_primary_prevention",
+          "population": "diabetes_40_75_very_high_risk",
+          "action": "consider_add_ezetimibe_or_pcsk9i"
+        },
+        {
+          "id": "10.27",
+          "text": "For people with diabetes and ASCVD, treatment with high-intensity statin therapy is recommended to obtain an LDL cholesterol reduction of ≥50% from baseline and an LDL cholesterol goal of <55 mg/dL (<1.4 mmol/L). Addition of ezetimibe or a PCSK9 inhibitor with proven benefit in this population is recommended if this goal is not achieved on maximum tolerated statin therapy.",
+          "text_zh": "糖尿病合併ASCVD者，建議使用高強度statin治療，使LDL膽固醇自基線降低≥50%，並達成LDL膽固醇<55 mg/dL的目標。若最大耐受statin治療無法達標，建議加用已證實有益的ezetimibe或PCSK9抑制劑。",
+          "evidence_level": "B",
+          "category": "statin_secondary_prevention",
+          "population": "diabetes_ascvd",
+          "action": "achieve_ldl_goal",
+          "targets": {
+            "ldl_reduction_percent": "≥50%",
+            "ldl_goal_mg_dl": "<55"
+          }
+        },
+        {
+          "id": "10.29",
+          "text": "For individuals with fasting triglyceride levels ≥500 mg/dL (≥5.7 mmol/L), evaluate for secondary causes of hypertriglyceridemia and consider medical therapy to reduce the risk of pancreatitis.",
+          "text_zh": "空腹三酸甘油酯≥500 mg/dL者，應評估高三酸甘油酯血症的次發原因，並考慮藥物治療以降低胰臟炎風險。",
+          "evidence_level": "C",
+          "category": "hypertriglyceridemia",
+          "population": "severe_hypertriglyceridemia",
+          "action": "evaluate_and_treat_severe_tg",
+          "threshold_tg_mg_dl": "≥500"
+        },
+        {
+          "id": "10.32",
+          "text": "In individuals receiving statin therapy, the addition of fibrate, niacin, or dietary supplements containing n-3 fatty acids is not recommended as they do not provide additional cardiovascular risk reduction.",
+          "text_zh": "已使用statin者，不建議加用fibrate、niacin或含n-3脂肪酸的膳食補充品，因為無法提供額外心血管風險降低效益。",
+          "evidence_level": "A",
+          "category": "combination_therapy",
+          "population": "diabetes_on_statin",
+          "action": "avoid_fibrate_niacin_supplements"
+        },
+        {
+          "id": "10.33",
+          "text": "Use aspirin therapy (75–162 mg/day) as a secondary prevention strategy in those with diabetes and a history of ASCVD.",
+          "text_zh": "糖尿病且有ASCVD病史者，使用aspirin（75-162 mg/天）作為次級預防策略。",
+          "evidence_level": "A",
+          "category": "antiplatelet",
+          "population": "diabetes_ascvd",
+          "action": "prescribe_aspirin_secondary_prevention",
+          "dose_mg_day": "75-162"
+        },
+        {
+          "id": "10.34a",
+          "text": "For individuals with ASCVD and documented aspirin allergy, clopidogrel (75 mg/day) should be used.",
+          "text_zh": "有ASCVD且記錄aspirin過敏者，應使用clopidogrel（75 mg/天）。",
+          "evidence_level": "B",
+          "category": "antiplatelet",
+          "population": "ascvd_aspirin_allergy",
+          "action": "prescribe_clopidogrel",
+          "dose_mg_day": "75"
+        },
+        {
+          "id": "10.35",
+          "text": "Combination therapy with 81 mg aspirin daily plus 2.5 mg rivaroxaban twice daily should be considered for individuals with stable coronary and/or peripheral artery disease (PAD) and low bleeding risk to prevent major adverse limb and cardiovascular events.",
+          "text_zh": "穩定性冠心病和/或周邊動脈疾病且出血風險低者，應考慮每日81 mg aspirin加上每日兩次2.5 mg rivaroxaban的合併治療，以預防主要不良肢體和心血管事件。",
+          "evidence_level": "A",
+          "category": "antiplatelet_anticoagulation",
+          "population": "stable_cad_pad_low_bleeding_risk",
+          "action": "consider_aspirin_rivaroxaban",
+          "dosing": {
+            "aspirin_mg_daily": 81,
+            "rivaroxaban_mg_twice_daily": 2.5
+          }
+        },
+        {
+          "id": "10.40a",
+          "text": "Among people with type 2 diabetes who have established ASCVD or chronic kidney disease (CKD), a sodium–glucose cotransporter 2 (SGLT2) inhibitor or glucagon-like peptide 1 receptor agonist (GLP-1 RA) with demonstrated cardiovascular disease benefit is recommended as part of the comprehensive cardiovascular risk reduction and/or glucose-lowering treatment plans.",
+          "text_zh": "已有ASCVD或CKD的第二型糖尿病患者，建議使用已證實有心血管益處的SGLT2抑制劑或GLP-1 RA作為全面心血管風險降低和/或降血糖治療計畫的一部分。",
+          "evidence_level": "A",
+          "category": "cv_risk_reduction",
+          "population": "type2_diabetes_ascvd_ckd",
+          "action": "prescribe_sglt2i_or_glp1ra"
+        },
+        {
+          "id": "10.40b",
+          "text": "In people with type 2 diabetes and established ASCVD or multiple ASCVD risk factors, or CKD, an SGLT2 inhibitor with demonstrated cardiovascular benefit is recommended to reduce the risk of cardiovascular events.",
+          "text_zh": "第二型糖尿病合併已確立ASCVD、多重ASCVD風險因子或CKD者，建議使用已證實有心血管益處的SGLT2抑制劑以降低心血管事件風險。",
+          "evidence_level": "A",
+          "category": "cv_risk_reduction",
+          "population": "type2_diabetes_high_cv_risk",
+          "action": "prescribe_sglt2i"
+        },
+        {
+          "id": "10.40c",
+          "text": "In people with type 2 diabetes and established ASCVD or multiple risk factors for ASCVD, or CKD, a GLP-1 RA with demonstrated cardiovascular benefit is recommended to reduce the risk of cardiovascular events.",
+          "text_zh": "第二型糖尿病合併已確立ASCVD、多重ASCVD風險因子或CKD者，建議使用已證實有心血管益處的GLP-1 RA以降低心血管事件風險。",
+          "evidence_level": "A",
+          "category": "cv_risk_reduction",
+          "population": "type2_diabetes_high_cv_risk",
+          "action": "prescribe_glp1ra"
+        },
+        {
+          "id": "10.40d",
+          "text": "In people with type 2 diabetes and established ASCVD or multiple risk factors for ASCVD, combined therapy with an SGLT2 inhibitor with demonstrated cardiovascular benefit and a GLP-1 RA with demonstrated cardiovascular benefit may be considered for additive reduction of the risk of adverse cardiovascular and kidney events.",
+          "text_zh": "第二型糖尿病合併已確立ASCVD或多重ASCVD風險因子者，可考慮合併使用已證實有心血管益處的SGLT2抑制劑和GLP-1 RA，以獲得心血管及腎臟不良事件風險的加成降低效果。",
+          "evidence_level": "B",
+          "category": "cv_risk_reduction",
+          "population": "type2_diabetes_high_cv_risk",
+          "action": "consider_combined_sglt2i_glp1ra"
+        },
+        {
+          "id": "10.41a",
+          "text": "In people with type 2 diabetes and established heart failure with either preserved or reduced ejection fraction, an SGLT2 inhibitor (including SGLT1/2 inhibitor) with proven benefit in this population is recommended to reduce the risk of worsening heart failure and cardiovascular death.",
+          "text_zh": "第二型糖尿病合併已確立心衰竭（無論射出分率保留或降低）者，建議使用已在此族群證實有益的SGLT2抑制劑（包括SGLT1/2抑制劑）以降低心衰竭惡化和心血管死亡風險。",
+          "evidence_level": "A",
+          "category": "heart_failure_treatment",
+          "population": "type2_diabetes_heart_failure",
+          "action": "prescribe_sglt2i_for_hf"
+        },
+        {
+          "id": "10.42",
+          "text": "For individuals with type 2 diabetes and CKD with albuminuria treated with maximum tolerated doses of ACE inhibitor or ARB, recommend treatment with a nonsteroidal MRA with demonstrated benefit to improve cardiovascular outcomes and reduce the risk of CKD progression.",
+          "text_zh": "第二型糖尿病合併CKD伴蛋白尿且已使用最大耐受劑量ACE抑制劑或ARB者，建議使用已證實有益的非類固醇MRA以改善心血管預後並降低CKD進展風險。",
+          "evidence_level": "A",
+          "category": "ckd_treatment",
+          "population": "type2_diabetes_ckd_albuminuria",
+          "action": "prescribe_nonsteroidal_mra"
+        },
+        {
+          "id": "10.43",
+          "text": "In individuals with diabetes aged ≥55 years with established ASCVD or multiple ASCVD risk factors, ACE inhibitor or ARB therapy is recommended to reduce the risk of cardiovascular events.",
+          "text_zh": "≥55歲糖尿病合併已確立ASCVD或多重ASCVD風險因子者，建議使用ACE抑制劑或ARB以降低心血管事件風險。",
+          "evidence_level": "A",
+          "category": "cv_risk_reduction",
+          "population": "diabetes_55_plus_high_cv_risk",
+          "action": "prescribe_acei_or_arb"
+        },
+        {
+          "id": "10.44b",
+          "text": "In individuals with diabetes and asymptomatic (stage B) heart failure, ACE inhibitors or ARBs and β-blockers are recommended to reduce the risk for progression to symptomatic (stage C) heart failure.",
+          "text_zh": "糖尿病合併無症狀（B期）心衰竭者，建議使用ACE抑制劑或ARB及β-阻斷劑以降低進展至有症狀（C期）心衰竭的風險。",
+          "evidence_level": "A",
+          "category": "heart_failure_prevention",
+          "population": "diabetes_stage_b_hf",
+          "action": "prescribe_acei_arb_betablocker"
+        },
+        {
+          "id": "10.44c",
+          "text": "In individuals with type 2 diabetes and asymptomatic (stage B) heart failure or with high risk of or established cardiovascular disease, treatment with an SGLT inhibitor with proven heart failure prevention benefit or a GLP-1 RA with heart failure prevention benefit is recommended to reduce the risk of hospitalization for heart failure.",
+          "text_zh": "第二型糖尿病合併無症狀（B期）心衰竭或心血管疾病高風險/已確立者，建議使用已證實可預防心衰竭的SGLT抑制劑或GLP-1 RA以降低心衰竭住院風險。",
+          "evidence_level": "A/B",
+          "category": "heart_failure_prevention",
+          "population": "type2_diabetes_stage_b_hf_high_cv_risk",
+          "action": "prescribe_sglt_or_glp1ra_for_hf_prevention"
+        },
+        {
+          "id": "10.44d",
+          "text": "In adults with type 2 diabetes, obesity, and symptomatic heart failure with preserved ejection fraction (HFpEF), the treatment plan should include a dual GIP/GLP-1 RA or a GLP-1 RA with demonstrated benefit for reduction in heart failure events.",
+          "text_zh": "第二型糖尿病、肥胖且有症狀HFpEF的成人，治療計畫應包含已證實可減少心衰竭事件的雙重GIP/GLP-1 RA或GLP-1 RA。",
+          "evidence_level": "A/B",
+          "category": "heart_failure_treatment",
+          "population": "type2_diabetes_obesity_hfpef",
+          "action": "prescribe_gip_glp1ra_for_hfpef"
+        },
+        {
+          "id": "10.44e",
+          "text": "In adults with type 2 diabetes, obesity, and symptomatic HFpEF, the treatment plan should include a dual GIP/GLP-1 RA or a GLP-1 RA with demonstrated benefit for reduction in heart failure symptoms.",
+          "text_zh": "第二型糖尿病、肥胖且有症狀HFpEF的成人，治療計畫應包含已證實可減少心衰竭症狀的雙重GIP/GLP-1 RA或GLP-1 RA。",
+          "evidence_level": "A",
+          "category": "heart_failure_treatment",
+          "population": "type2_diabetes_obesity_hfpef",
+          "action": "prescribe_gip_glp1ra_for_hf_symptoms"
+        },
+        {
+          "id": "10.44f",
+          "text": "In individuals with type 2 diabetes and CKD, recommend treatment with a nonsteroidal MRA with demonstrated benefit to reduce the risk of hospitalization for heart failure.",
+          "text_zh": "第二型糖尿病合併CKD者，建議使用已證實有益的非類固醇MRA以降低心衰竭住院風險。",
+          "evidence_level": "A",
+          "category": "heart_failure_prevention",
+          "population": "type2_diabetes_ckd",
+          "action": "prescribe_nonsteroidal_mra_for_hf"
+        },
+        {
+          "id": "10.44g",
+          "text": "In individuals with diabetes, guideline-directed medical therapy for myocardial infarction and symptomatic stage C heart failure is recommended with ACE inhibitors or ARBs (including ARBs and neprilysin inhibitors), MRAs, β-blockers, and SGLT2 inhibitors.",
+          "text_zh": "糖尿病患者心肌梗塞及有症狀C期心衰竭的指引導向藥物治療，建議使用ACE抑制劑或ARB（包括ARB與腦啡肽酶抑制劑）、MRA、β-阻斷劑及SGLT2抑制劑。",
+          "evidence_level": "A",
+          "category": "heart_failure_treatment",
+          "population": "diabetes_mi_stage_c_hf",
+          "action": "prescribe_gdmt_for_hfref"
+        },
+        {
+          "id": "10.44h",
+          "text": "In individuals with diabetes and symptomatic stage C heart failure with ejection fraction >40%, a nonsteroidal MRA with proven benefit in reducing worsening heart failure events is recommended. A nonsteroidal MRA should not be used with an MRA.",
+          "text_zh": "糖尿病合併有症狀C期心衰竭且射出分率>40%者，建議使用已證實可減少心衰竭惡化事件的非類固醇MRA。非類固醇MRA不應與MRA併用。",
+          "evidence_level": "A",
+          "category": "heart_failure_treatment",
+          "population": "diabetes_stage_c_hf_ef_over_40",
+          "action": "prescribe_nonsteroidal_mra_for_hfpef"
+        },
+        {
+          "id": "10.45",
+          "text": "In people with type 2 diabetes with stable heart failure, metformin may be continued for glucose lowering if eGFR remains >30 mL/min/1.73 m² but should be avoided in unstable or hospitalized individuals with heart failure.",
+          "text_zh": "第二型糖尿病合併穩定心衰竭者，若eGFR維持>30 mL/min/1.73 m²可繼續使用metformin降血糖，但不穩定或因心衰竭住院者應避免使用。",
+          "evidence_level": "B",
+          "category": "glucose_lowering",
+          "population": "type2_diabetes_stable_hf",
+          "action": "continue_metformin_if_stable",
+          "egfr_threshold": ">30 mL/min/1.73 m²"
+        }
+      ]
+    },
+    {
+      "section": 11,
+      "title": "Chronic Kidney Disease and Risk Management",
+      "title_zh": "慢性腎臟病及風險管理",
+      "recommendations": [
+        {
+          "id": "11.1a",
+          "text": "Assess kidney function with random urine albumin-to-creatinine ratio (UACR) and estimated glomerular filtration rate (eGFR) at least annually in people with type 1 diabetes with duration of ≥5 years and in all people with type 2 diabetes regardless of treatment.",
+          "text_zh": "第一型糖尿病病程≥5年者及所有第二型糖尿病患者（不論治療方式），應至少每年以隨機尿液白蛋白/肌酸酐比值（UACR）及估計腎絲球過濾率（eGFR）評估腎功能。",
+          "evidence_level": "B",
+          "category": "screening",
+          "population": "diabetes",
+          "action": "assess_kidney_function_annually"
+        },
+        {
+          "id": "11.1b",
+          "text": "In people with chronic kidney disease (CKD), monitor urinary albumin (e.g., spot UACR) and eGFR 1–4 times per year depending on the stage of kidney disease.",
+          "text_zh": "慢性腎臟病（CKD）患者應依腎臟病分期，每年監測尿液白蛋白（如隨機UACR）及eGFR 1-4次。",
+          "evidence_level": "B",
+          "category": "monitoring",
+          "population": "ckd",
+          "action": "monitor_uacr_egfr"
+        },
+        {
+          "id": "11.2",
+          "text": "Aim to reduce urinary albumin by ≥30% in people with CKD and albuminuria ≥300 mg/g to slow CKD progression.",
+          "text_zh": "對於CKD且白蛋白尿≥300 mg/g者，目標為減少尿液白蛋白≥30%以延緩CKD進展。",
+          "evidence_level": "B",
+          "category": "treatment_goal",
+          "population": "ckd_with_albuminuria",
+          "action": "reduce_albuminuria",
+          "target": {
+            "albuminuria_reduction_percent": 30,
+            "baseline_uacr_threshold_mg_g": 300
+          }
+        },
+        {
+          "id": "11.3",
+          "text": "For people with CKD stage G3 or higher, protein intake should be 0.8 g/kg body weight per day, as for the general population. For individuals on dialysis, protein intake of 1.0–1.2 g/kg/day should be considered, since protein energy wasting is a major problem for some individuals on dialysis.",
+          "text_zh": "CKD第G3期或更高者，蛋白質攝取量應為每日0.8 g/kg體重，與一般人群相同。洗腎患者應考慮蛋白質攝取量1.0-1.2 g/kg/day，因蛋白質能量耗損是部分洗腎患者的主要問題。",
+          "evidence_level": "A/B",
+          "category": "nutrition",
+          "population": "ckd_stage_g3_or_higher",
+          "action": "protein_intake_recommendation",
+          "targets": {
+            "non_dialysis_protein_g_kg_day": 0.8,
+            "dialysis_protein_g_kg_day_range": [1.0, 1.2]
+          }
+        },
+        {
+          "id": "11.4",
+          "text": "Optimize glucose management to reduce the risk or slow the progression of CKD.",
+          "text_zh": "優化血糖管理以降低CKD風險或延緩其進展。",
+          "evidence_level": "A",
+          "category": "glycemic_management",
+          "population": "diabetes_with_ckd_risk",
+          "action": "optimize_glucose_management"
+        },
+        {
+          "id": "11.6b",
+          "text": "Monitor for drop in eGFR and increase in serum potassium levels at initiation and periodically as clinically appropriate when ACE inhibitors, ARBs, and mineralocorticoid receptor antagonists (MRAs) are used. Monitor for hypokalemia when diuretics are used at routine visits and 7–14 days after initiation or after a dose change and periodically as clinically appropriate.",
+          "text_zh": "使用ACE抑制劑、ARB及礦物皮質素受體拮抗劑（MRA）時，應於起始及定期監測eGFR下降及血清鉀升高。使用利尿劑時，應於例行就診及開始用藥或劑量調整後7-14天監測低血鉀，並定期追蹤。",
+          "evidence_level": "B",
+          "category": "monitoring",
+          "population": "patients_on_ras_blockers",
+          "action": "monitor_egfr_potassium"
+        },
+        {
+          "id": "11.10",
+          "text": "Kidney-protective medications that are potentially harmful in pregnancy should be avoided in sexually active individuals of childbearing potential who are not using reliable contraception and, if used, should be switched prior to conception to kidney-protective medications considered safer during pregnancy.",
+          "text_zh": "可能對妊娠有害的腎臟保護藥物，應避免用於性活躍且未使用可靠避孕措施的育齡個案；若有使用，應於受孕前轉換為妊娠期間較安全的腎臟保護藥物。",
+          "evidence_level": "B",
+          "category": "pregnancy",
+          "population": "childbearing_potential",
+          "action": "avoid_teratogenic_medications",
+          "contraindicated_in_pregnancy": ["ACE_inhibitors", "ARBs", "direct_renin_inhibitors", "MRAs", "SGLT2_inhibitors", "neprilysin_inhibitors"]
+        },
+        {
+          "id": "11.11b",
+          "text": "Individuals on dialysis can be safely initiated or continued on GLP-1–based therapy that is not dependent on kidney clearance to reduce cardiovascular risk and mortality.",
+          "text_zh": "洗腎患者可安全開始或繼續使用不依賴腎臟清除的GLP-1類藥物，以降低心血管風險及死亡率。",
+          "evidence_level": "C",
+          "category": "pharmacotherapy",
+          "population": "dialysis",
+          "action": "glp1_therapy_on_dialysis",
+          "note": "Avoid exenatide and lixisenatide (require kidney clearance)"
+        },
+        {
+          "id": "11.12b",
+          "text": "Refer to a nephrologist for uncertainty about the etiology of kidney disease or difficult management issues.",
+          "text_zh": "若對腎臟病病因不確定或有困難的管理問題，應轉介腎臟科。",
+          "evidence_level": "B",
+          "category": "referral",
+          "population": "ckd_complex",
+          "action": "refer_to_nephrologist",
+          "indications": ["uncertain_etiology", "difficult_management", "anemia", "secondary_hyperparathyroidism", "metabolic_bone_disease", "resistant_hypertension", "electrolyte_disturbances"]
+        }
+      ]
+    },
+    {
+      "section": 12,
+      "title": "Retinopathy, Neuropathy, and Foot Care",
+      "title_zh": "視網膜病變、神經病變與足部照護",
+      "recommendations": [
+        {
+          "id": "12.1",
+          "text": "Implement strategies to help people with diabetes reach glycemic goals to reduce the risk or slow the progression of diabetic retinopathy.",
+          "text_zh": "實施策略協助糖尿病患者達成血糖目標，以降低糖尿病視網膜病變的風險或延緩其進展。",
+          "evidence_level": "A",
+          "category": "retinopathy_prevention",
+          "population": "diabetes",
+          "action": "glycemic_management"
+        },
+        {
+          "id": "12.2",
+          "text": "Implement strategies to help people with diabetes reach blood pressure and lipid goals to reduce the risk or slow the progression of diabetic retinopathy.",
+          "text_zh": "實施策略協助糖尿病患者達成血壓及血脂目標，以降低糖尿病視網膜病變的風險或延緩其進展。",
+          "evidence_level": "A",
+          "category": "retinopathy_prevention",
+          "population": "diabetes",
+          "action": "bp_lipid_management"
+        },
+        {
+          "id": "12.3",
+          "text": "Adults with type 1 diabetes should have an initial dilated and comprehensive eye examination by an ophthalmologist or optometrist 5 years after the onset of diabetes.",
+          "text_zh": "第一型糖尿病成人應於發病後5年內，由眼科醫師或驗光師進行初次散瞳綜合眼科檢查。",
+          "evidence_level": "B",
+          "category": "retinopathy_screening",
+          "population": "type1_diabetes",
+          "action": "initial_eye_exam",
+          "timing": "5_years_after_diagnosis"
+        },
+        {
+          "id": "12.4",
+          "text": "People with type 2 diabetes should have an initial dilated and comprehensive eye examination by an ophthalmologist or optometrist at the time of the diabetes diagnosis.",
+          "text_zh": "第二型糖尿病患者應於診斷時，由眼科醫師或驗光師進行初次散瞳綜合眼科檢查。",
+          "evidence_level": "B",
+          "category": "retinopathy_screening",
+          "population": "type2_diabetes",
+          "action": "initial_eye_exam",
+          "timing": "at_diagnosis"
+        },
+        {
+          "id": "12.5",
+          "text": "If there is no evidence of retinopathy from one or more annual eye exams and glycemic indicators are within the goal range, then screening every 1–2 years may be considered. If any level of diabetic retinopathy is present, subsequent dilated retinal examinations should be repeated at least annually by an ophthalmologist or optometrist. If retinopathy is progressing or sight-threatening, then examinations by an ophthalmologist will be required more frequently.",
+          "text_zh": "若一次或多次年度眼科檢查無視網膜病變證據且血糖指標在目標範圍內，可考慮每1-2年篩檢一次。若有任何程度的糖尿病視網膜病變，後續散瞳視網膜檢查應至少每年由眼科醫師或驗光師進行。若視網膜病變持續進展或威脅視力，則需更頻繁地由眼科醫師檢查。",
+          "evidence_level": "B",
+          "category": "retinopathy_screening",
+          "population": "diabetes",
+          "action": "follow_up_eye_exam",
+          "frequency": {
+            "no_retinopathy_good_control": "every_1_2_years",
+            "any_retinopathy": "at_least_annually",
+            "progressing_or_sight_threatening": "more_frequently"
+          }
+        },
+        {
+          "id": "12.6",
+          "text": "Programs that use retinal photography with remote reading or the use of U.S. Food and Drug Administration–approved artificial intelligence algorithms to improve access to diabetic retinopathy screening are appropriate screening strategies for diabetic retinopathy. Such programs need to provide pathways for timely referral for a comprehensive eye examination when indicated.",
+          "text_zh": "使用視網膜攝影結合遠端判讀或使用美國FDA核准的人工智慧演算法以改善糖尿病視網膜病變篩檢可及性的計畫，是適當的篩檢策略。此類計畫需提供適當的轉診途徑以便在需要時進行綜合眼科檢查。",
+          "evidence_level": "B",
+          "category": "retinopathy_screening",
+          "population": "diabetes",
+          "action": "retinal_photography_ai_screening"
+        },
+        {
+          "id": "12.7",
+          "text": "Counsel individuals of childbearing potential with preexisting type 1 or type 2 diabetes who are planning pregnancy or who are pregnant on the risk of development and/or progression of diabetic retinopathy.",
+          "text_zh": "對於計劃懷孕或已懷孕且已有第一型或第二型糖尿病的育齡個案，應諮詢其糖尿病視網膜病變發生及/或進展的風險。",
+          "evidence_level": "B",
+          "category": "retinopathy_pregnancy",
+          "population": "preexisting_diabetes_pregnancy",
+          "action": "counsel_retinopathy_risk"
+        },
+        {
+          "id": "12.8",
+          "text": "Individuals with preexisting type 1 or type 2 diabetes should receive an eye exam before pregnancy as well as in the first trimester and may need to be monitored every trimester and for 1 year postpartum as indicated by the degree of retinopathy.",
+          "text_zh": "已有第一型或第二型糖尿病者應於懷孕前及第一孕期進行眼科檢查，並依視網膜病變程度，可能需每一孕期及產後1年追蹤。",
+          "evidence_level": "B",
+          "category": "retinopathy_pregnancy",
+          "population": "preexisting_diabetes_pregnancy",
+          "action": "pregnancy_eye_monitoring"
+        },
+        {
+          "id": "12.9",
+          "text": "Promptly refer individuals with any level of diabetic macular edema, moderate or worse nonproliferative diabetic retinopathy (a precursor of proliferative diabetic retinopathy [PDR]), or any PDR to an ophthalmologist who is knowledgeable and experienced in the management of diabetic retinopathy.",
+          "text_zh": "應立即將任何程度糖尿病黃斑部水腫、中度或更嚴重的非增殖性糖尿病視網膜病變（增殖性糖尿病視網膜病變的前兆）、或任何增殖性糖尿病視網膜病變患者轉介至具有糖尿病視網膜病變處置知識與經驗的眼科醫師。",
+          "evidence_level": "A",
+          "category": "retinopathy_referral",
+          "population": "diabetic_retinopathy",
+          "action": "refer_to_ophthalmologist"
+        },
+        {
+          "id": "12.10",
+          "text": "Panretinal laser photocoagulation therapy is indicated to reduce the risk of vision loss in individuals with high-risk PDR and, in some cases, severe nonproliferative diabetic retinopathy.",
+          "text_zh": "全視網膜雷射光凝固治療適用於降低高風險增殖性糖尿病視網膜病變患者的視力喪失風險，某些情況下也適用於嚴重非增殖性糖尿病視網膜病變。",
+          "evidence_level": "A",
+          "category": "retinopathy_treatment",
+          "population": "high_risk_pdr",
+          "action": "panretinal_photocoagulation"
+        },
+        {
+          "id": "12.11",
+          "text": "Intravitreous injections of anti–vascular endothelial growth factor (anti-VEGF) are a reasonable alternative to traditional panretinal laser photocoagulation for some individuals with PDR and also reduce the risk of vision loss in these individuals.",
+          "text_zh": "對於部分增殖性糖尿病視網膜病變患者，玻璃體內注射抗血管內皮生長因子（anti-VEGF）是傳統全視網膜雷射光凝固的合理替代療法，也可降低這些患者的視力喪失風險。",
+          "evidence_level": "A",
+          "category": "retinopathy_treatment",
+          "population": "pdr",
+          "action": "anti_vegf_injection"
+        },
+        {
+          "id": "12.12",
+          "text": "Intravitreous injections of anti-VEGF are indicated as first-line treatment for most eyes with diabetic macular edema that involves the foveal center and impairs visual acuity.",
+          "text_zh": "對於大多數涉及黃斑中央且影響視力的糖尿病黃斑部水腫眼睛，玻璃體內注射anti-VEGF為首選治療。",
+          "evidence_level": "A",
+          "category": "retinopathy_treatment",
+          "population": "center_involved_dme",
+          "action": "anti_vegf_first_line"
+        },
+        {
+          "id": "12.13",
+          "text": "Macular focal/grid photocoagulation and intravitreal injections of corticosteroid are reasonable treatments in eyes with persistent diabetic macular edema despite previous anti-VEGF therapy or eyes that are not candidates for this first-line approach.",
+          "text_zh": "對於先前anti-VEGF治療後仍有持續性糖尿病黃斑部水腫的眼睛，或不適合此首選療法的眼睛，黃斑部局部/格狀雷射光凝固及玻璃體內皮質類固醇注射是合理的治療選擇。",
+          "evidence_level": "A",
+          "category": "retinopathy_treatment",
+          "population": "persistent_dme",
+          "action": "focal_laser_or_corticosteroid"
+        },
+        {
+          "id": "12.14",
+          "text": "The presence of retinopathy is not a contraindication to aspirin therapy for cardioprotection, as aspirin does not increase the risk of retinal hemorrhage.",
+          "text_zh": "視網膜病變的存在並非心臟保護性阿斯匹靈治療的禁忌症，因阿斯匹靈不會增加視網膜出血風險。",
+          "evidence_level": "A",
+          "category": "retinopathy_treatment",
+          "population": "diabetic_retinopathy",
+          "action": "aspirin_not_contraindicated"
+        },
+        {
+          "id": "12.15",
+          "text": "People who experience diabetes-related vision loss should be counseled on the availability and scope of vision rehabilitation care and provided, or referred for, a comprehensive evaluation of their visual impairment by a practitioner experienced in vision rehabilitation.",
+          "text_zh": "經歷糖尿病相關視力喪失者應接受視覺復健照護可用性及範圍的諮詢，並由具視覺復健經驗的專業人員提供或轉介進行視覺障礙綜合評估。",
+          "evidence_level": "E",
+          "category": "visual_rehabilitation",
+          "population": "diabetes_vision_loss",
+          "action": "counsel_vision_rehabilitation"
+        },
+        {
+          "id": "12.16",
+          "text": "People with diabetes-related vision loss should receive educational materials and resources for eye care support in addition to self-management education (e.g., glycemic management and hypoglycemia awareness).",
+          "text_zh": "糖尿病相關視力喪失者應接受眼睛照護支持的教育材料及資源，以及自我管理教育（如血糖管理及低血糖意識）。",
+          "evidence_level": "E",
+          "category": "visual_rehabilitation",
+          "population": "diabetes_vision_loss",
+          "action": "provide_eye_care_education"
+        },
+        {
+          "id": "12.17",
+          "text": "All people with diabetes should be assessed for diabetic peripheral neuropathy starting at diagnosis of type 2 diabetes and 5 years after the diagnosis of type 1 diabetes and at least annually thereafter.",
+          "text_zh": "所有糖尿病患者應從第二型糖尿病診斷時及第一型糖尿病診斷後5年開始評估糖尿病周邊神經病變，之後至少每年評估一次。",
+          "evidence_level": "B",
+          "category": "neuropathy_screening",
+          "population": "diabetes",
+          "action": "assess_dpn",
+          "timing": {
+            "type1": "5_years_after_diagnosis",
+            "type2": "at_diagnosis",
+            "follow_up": "at_least_annually"
+          }
+        },
+        {
+          "id": "12.18",
+          "text": "Assessment for distal symmetric polyneuropathy should include a careful history and assessment of either temperature or pinprick sensation (small-fiber function) and vibration sensation using a 128-Hz tuning fork (large-fiber function). All people with diabetes should have annual 10-g monofilament testing to identify feet at risk for ulceration and amputation.",
+          "text_zh": "遠端對稱性多發性神經病變的評估應包括詳細病史及溫度或針刺感覺評估（小纖維功能）與使用128-Hz音叉評估振動感覺（大纖維功能）。所有糖尿病患者應每年進行10克單絲檢測以辨識有潰瘍及截肢風險的足部。",
+          "evidence_level": "B",
+          "category": "neuropathy_screening",
+          "population": "diabetes",
+          "action": "comprehensive_neuropathy_assessment",
+          "tests": {
+            "small_fiber": ["temperature", "pinprick"],
+            "large_fiber": ["vibration_128hz_tuning_fork"],
+            "protective_sensation": ["10g_monofilament"]
+          }
+        },
+        {
+          "id": "12.19",
+          "text": "Symptoms and signs of autonomic neuropathy should be assessed in people with diabetes starting at diagnosis of type 2 diabetes and 5 years after the diagnosis of type 1 diabetes, and at least annually thereafter, and with evidence of other microvascular complications, particularly kidney disease and diabetic peripheral neuropathy.",
+          "text_zh": "應從第二型糖尿病診斷時及第一型糖尿病診斷後5年開始，至少每年評估糖尿病患者的自主神經病變症狀及徵象，尤其是有其他微血管併發症（特別是腎臟病及糖尿病周邊神經病變）證據者。",
+          "evidence_level": "E",
+          "category": "neuropathy_screening",
+          "population": "diabetes",
+          "action": "assess_autonomic_neuropathy"
+        },
+        {
+          "id": "12.20",
+          "text": "Optimize glucose management to prevent or delay the development of neuropathy in people with type 1 diabetes and to slow the progression of neuropathy in people with type 2 diabetes. Optimize weight, blood pressure, and lipid management to reduce the risk or slow the progression of diabetic neuropathy.",
+          "text_zh": "優化血糖管理以預防或延緩第一型糖尿病患者神經病變的發展，並延緩第二型糖尿病患者神經病變的進展。優化體重、血壓及血脂管理以降低糖尿病神經病變的風險或延緩其進展。",
+          "evidence_level": "A/C/B",
+          "category": "neuropathy_treatment",
+          "population": "diabetes",
+          "action": "optimize_metabolic_management"
+        },
+        {
+          "id": "12.21",
+          "text": "Assess and treat pain related to diabetic peripheral neuropathy and symptoms of autonomic neuropathy to improve quality of life.",
+          "text_zh": "評估並治療糖尿病周邊神經病變相關疼痛及自主神經病變症狀以改善生活品質。",
+          "evidence_level": "B/E",
+          "category": "neuropathy_treatment",
+          "population": "painful_dpn",
+          "action": "assess_treat_neuropathic_pain"
+        },
+        {
+          "id": "12.22",
+          "text": "Gabapentinoids, serotonin-norepinephrine reuptake inhibitors, tricyclic antidepressants, and sodium channel blockers are recommended as initial pharmacologic treatments for neuropathic pain in diabetes. Combinations of these medications can provide additional relief of neuropathic pain. Opioids, including tramadol and tapentadol, should not be used for neuropathic pain treatment in diabetes given the potential for adverse events except in rare circumstances.",
+          "text_zh": "Gabapentinoids、血清素-去甲腎上腺素再吸收抑制劑（SNRIs）、三環抗憂鬱劑及鈉離子通道阻斷劑為糖尿病神經痛的初始藥物治療建議。這些藥物的組合可提供額外的神經痛緩解。鑒於不良事件的潛在風險，除罕見情況外，不應使用類鴉片藥物（包括tramadol及tapentadol）治療糖尿病神經痛。",
+          "evidence_level": "A/B",
+          "category": "neuropathy_treatment",
+          "population": "painful_dpn",
+          "action": "pharmacotherapy_neuropathic_pain",
+          "first_line_medications": ["gabapentinoids", "SNRIs", "TCAs", "sodium_channel_blockers"],
+          "avoid": ["opioids", "tramadol", "tapentadol"]
+        },
+        {
+          "id": "12.23",
+          "text": "Perform a comprehensive foot evaluation at least annually to identify risk factors for ulcers and amputations.",
+          "text_zh": "至少每年進行一次綜合足部評估以辨識潰瘍及截肢的風險因子。",
+          "evidence_level": "A",
+          "category": "foot_care_screening",
+          "population": "diabetes",
+          "action": "annual_foot_evaluation"
+        },
+        {
+          "id": "12.24",
+          "text": "The examination should include inspection of the skin, assessment of foot deformities, neurological assessment (10-g monofilament testing or Ipswich touch test with at least one additional assessment: pinprick, temperature, or vibration), and vascular assessment, including pulses in the legs and feet.",
+          "text_zh": "檢查應包括皮膚檢視、足部畸形評估、神經學評估（10克單絲檢測或Ipswich觸摸測試加上至少一項額外評估：針刺、溫度或振動），以及血管評估（包括腿部及足部脈搏）。",
+          "evidence_level": "B",
+          "category": "foot_care_screening",
+          "population": "diabetes",
+          "action": "comprehensive_foot_exam",
+          "components": ["skin_inspection", "foot_deformity_assessment", "neurological_assessment", "vascular_assessment"]
+        },
+        {
+          "id": "12.25",
+          "text": "Individuals with evidence of sensory loss or prior ulceration or amputation should have their feet inspected at every visit.",
+          "text_zh": "有感覺喪失證據或先前潰瘍或截肢病史者，應於每次就診時檢查足部。",
+          "evidence_level": "A",
+          "category": "foot_care_screening",
+          "population": "high_risk_foot",
+          "action": "inspect_feet_every_visit"
+        },
+        {
+          "id": "12.26",
+          "text": "Obtain a prior history of ulceration, amputation, Charcot foot, angioplasty or vascular surgery, cigarette smoking, retinopathy, and renal disease and assess current symptoms of neuropathy (e.g., pain, burning, numbness) and vascular disease (e.g., leg fatigue, claudication).",
+          "text_zh": "取得先前潰瘍、截肢、Charcot足、血管成形術或血管手術、吸菸、視網膜病變及腎臟病病史，並評估目前神經病變症狀（如疼痛、灼熱、麻木）及血管疾病症狀（如腿部疲勞、跛行）。",
+          "evidence_level": "B",
+          "category": "foot_care_screening",
+          "population": "diabetes",
+          "action": "obtain_foot_history"
+        },
+        {
+          "id": "12.27",
+          "text": "Initial screening for peripheral artery disease (PAD) should include assessment of lower-extremity pulses, capillary refill time, rubor on dependency, pallor on elevation, and venous filling time. Individuals with a history of leg fatigue, claudication, and rest pain relieved with dependency or decreased or absent pedal pulses should be referred for ankle-brachial index with toe pressures and for further vascular assessment as appropriate.",
+          "text_zh": "周邊動脈疾病（PAD）的初步篩檢應包括下肢脈搏、毛細血管再充盈時間、垂放時發紅、抬高時蒼白及靜脈充盈時間的評估。有腿部疲勞、跛行及垂放緩解的休息痛病史或足背脈搏減弱或消失者，應轉介進行踝肱指數及足趾壓力檢測，並視情況進一步血管評估。",
+          "evidence_level": "B",
+          "category": "foot_care_screening",
+          "population": "diabetes",
+          "action": "pad_screening_and_referral"
+        },
+        {
+          "id": "12.28",
+          "text": "An interprofessional approach facilitated by a podiatrist in conjunction with other appropriate team members is recommended for individuals with foot ulcers and high-risk feet (e.g., those on dialysis, those with Charcot foot, those with a history of prior ulcers or amputation, and those with PAD).",
+          "text_zh": "對於足部潰瘍及高風險足部患者（如洗腎者、Charcot足患者、有先前潰瘍或截肢病史者及PAD患者），建議由足科醫師協調並結合其他適當團隊成員的跨專業照護方式。",
+          "evidence_level": "B",
+          "category": "foot_care_treatment",
+          "population": "high_risk_foot",
+          "action": "interprofessional_foot_care"
+        },
+        {
+          "id": "12.29",
+          "text": "Refer individuals who smoke and have a history of prior lower-extremity complications, loss of protective sensation (LOPS), structural abnormalities, or PAD to foot care specialists for ongoing preventive care and lifelong surveillance. These individuals should also be provided with information on the importance of smoking cessation and referred for counseling on smoking cessation.",
+          "text_zh": "將吸菸且有先前下肢併發症、保護性感覺喪失（LOPS）、結構異常或PAD病史者轉介至足部照護專科進行持續預防照護及終身監測。這些患者也應提供戒菸重要性的資訊並轉介戒菸諮詢。",
+          "evidence_level": "B/A",
+          "category": "foot_care_referral",
+          "population": "smokers_high_risk_foot",
+          "action": "refer_foot_specialist_smoking_cessation"
+        },
+        {
+          "id": "12.30",
+          "text": "Provide general preventive foot self-care education to all people with diabetes, including those with LOPS, on appropriate ways to examine their feet (palpation or visual inspection with an unbreakable mirror) for daily surveillance of early foot problems.",
+          "text_zh": "為所有糖尿病患者（包括LOPS患者）提供一般預防性足部自我照護教育，包括適當的足部檢查方式（觸診或使用不易碎鏡子視診）以每日監測早期足部問題。",
+          "evidence_level": "B",
+          "category": "foot_care_education",
+          "population": "diabetes",
+          "action": "foot_self_care_education"
+        },
+        {
+          "id": "12.31",
+          "text": "The use of specialized therapeutic footwear is recommended for people with diabetes at high risk for ulceration, including those with LOPS, foot deformities, ulcers, callous formation, poor peripheral circulation, or history of amputation.",
+          "text_zh": "對於高潰瘍風險的糖尿病患者，建議使用專業治療性鞋具，包括LOPS、足部畸形、潰瘍、胼胝形成、周邊循環不良或截肢病史者。",
+          "evidence_level": "B",
+          "category": "foot_care_treatment",
+          "population": "high_risk_foot",
+          "action": "therapeutic_footwear"
+        },
+        {
+          "id": "12.32",
+          "text": "For chronic diabetic foot ulcers that have failed to heal with optimal standard care alone, adjunctive treatment with randomized controlled trial–proven advanced agents should be considered (e.g., negative-pressure wound therapy, several skin substitutes, or topical oxygen therapy).",
+          "text_zh": "對於僅使用最佳標準照護無法癒合的慢性糖尿病足潰瘍，應考慮使用經隨機對照試驗證實有效的進階輔助治療（如負壓傷口治療、多種皮膚替代品或局部氧氣治療）。",
+          "evidence_level": "A",
+          "category": "foot_care_treatment",
+          "population": "chronic_dfu",
+          "action": "advanced_wound_therapy",
+          "options": ["negative_pressure_wound_therapy", "skin_substitutes", "topical_oxygen_therapy"]
+        }
+      ]
+    }
+  ]
+}

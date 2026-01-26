@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareDash | 慢性病照護儀表板 (Demo)</title>
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <span class="logo-text">CareDash</span>
+                <span style="font-size: 0.75rem; color: var(--color-text-secondary); margin-left: 8px;">(Demo)</span>
+            </div>
+
+            <!-- Patient Info in Header -->
+            <div class="patient-header">
+                <span class="patient-name" id="patient-name">王大明</span>
+                <span class="patient-meta" id="patient-meta">68 歲 · 男 · 4 項慢性病</span>
+            </div>
+
+            <div class="header-right">
+                <div class="date-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span id="current-date">2026年1月25日</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content - 3 Column Layout -->
+        <main class="main-content">
+            <!-- Left Column - Disease Categories -->
+            <aside class="left-column">
+                <h2 class="column-title">慢性病管理</h2>
+                <div class="disease-list" id="disease-list">
+                    <!-- Diabetes -->
+                    <button class="disease-card" data-disease="dm" id="disease-dm" onclick="selectDisease('dm')">
+                        <div class="disease-icon dm">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">糖尿病</span>
+                            <span class="disease-value" id="dm-value">HbA1c 7.2%</span>
+                        </div>
+                        <div class="disease-status warning" id="dm-status">偏高</div>
+                    </button>
+
+                    <!-- Hypertension -->
+                    <button class="disease-card" data-disease="htn" id="disease-htn" onclick="selectDisease('htn')">
+                        <div class="disease-icon htn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">高血壓</span>
+                            <span class="disease-value" id="htn-value">138/85 mmHg</span>
+                        </div>
+                        <div class="disease-status warning" id="htn-status">偏高</div>
+                    </button>
+
+                    <!-- Hyperlipidemia -->
+                    <button class="disease-card" data-disease="lipid" id="disease-lipid" onclick="selectDisease('lipid')">
+                        <div class="disease-icon lipid">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 12h8M12 8v8"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">高血脂</span>
+                            <span class="disease-value" id="lipid-value">LDL 68 mg/dL</span>
+                        </div>
+                        <div class="disease-status good" id="lipid-status">達標</div>
+                    </button>
+
+                    <!-- CKD -->
+                    <button class="disease-card" data-disease="ckd" id="disease-ckd" onclick="selectDisease('ckd')">
+                        <div class="disease-icon ckd">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 12c0-3 2-6 6-6s6 3 6 6-2 6-6 6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">慢性腎臟病</span>
+                            <span class="disease-value" id="ckd-value">eGFR 52 (G3a)</span>
+                        </div>
+                        <div class="disease-status warning" id="ckd-status">中度</div>
+                    </button>
+
+                    <!-- Heart Failure - No Diagnosis -->
+                    <button class="disease-card no-diagnosis" data-disease="hf" id="disease-hf" onclick="selectDisease('hf')">
+                        <div class="disease-icon hf">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">心衰竭</span>
+                            <span class="disease-value" id="hf-value">LVEF 55%</span>
+                        </div>
+                        <div class="disease-status good" id="hf-status">正常</div>
+                    </button>
+
+                    <!-- Atrial Fibrillation - No Diagnosis -->
+                    <button class="disease-card no-diagnosis" data-disease="af" id="disease-af" onclick="selectDisease('af')">
+                        <div class="disease-icon af">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12h4l3-9 4 18 3-9h4"/>
+                            </svg>
+                        </div>
+                        <div class="disease-info">
+                            <span class="disease-name">心房顫動</span>
+                            <span class="disease-value" id="af-value">心率 72 bpm</span>
+                        </div>
+                        <div class="disease-status good" id="af-status">正常</div>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Center Column - Dynamic Content -->
+            <section class="center-column">
+                <div class="center-header">
+                    <h2 class="center-title" id="center-title">目前用藥</h2>
+                    <span class="center-subtitle" id="center-subtitle"></span>
+                </div>
+
+                <!-- Content Area - Initially shows medications -->
+                <div class="center-content" id="center-content">
+                    <!-- Medications View (default) -->
+                    <div id="medications-view" class="content-view active">
+                        <div class="medications-summary" id="medications-summary">
+                            <span class="med-count" id="med-count">8</span>
+                            <span class="med-label">項藥物</span>
+                        </div>
+                        <div class="medications-list" id="medications-list">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Disease Detail View (shown when disease is selected) -->
+                    <div id="disease-view" class="content-view">
+                        <div class="disease-detail" id="disease-detail">
+                            <!-- Dynamic disease content -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column - Quick Info & Labs -->
+            <aside class="right-column">
+                <!-- Key Metrics -->
+                <div class="metrics-card">
+                    <h3 class="card-title">關鍵指標</h3>
+                    <div class="metrics-grid" id="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">HbA1c</span>
+                            <span class="metric-value" id="metric-hba1c">7.2</span>
+                            <span class="metric-unit">%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">血壓</span>
+                            <span class="metric-value" id="metric-bp">138/85</span>
+                            <span class="metric-unit">mmHg</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">LDL</span>
+                            <span class="metric-value" id="metric-ldl">68</span>
+                            <span class="metric-unit">mg/dL</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">eGFR</span>
+                            <span class="metric-value" id="metric-egfr">52</span>
+                            <span class="metric-unit">mL/min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Labs -->
+                <div class="labs-card">
+                    <h3 class="card-title">其他檢驗</h3>
+                    <div class="labs-grid" id="labs-grid">
+                        <div class="lab-item">
+                            <span class="lab-label">K⁺</span>
+                            <span class="lab-value" id="lab-k">4.2</span>
+                        </div>
+                        <div class="lab-item">
+                            <span class="lab-label">Hb</span>
+                            <span class="lab-value" id="lab-hb">13.5</span>
+                        </div>
+                        <div class="lab-item">
+                            <span class="lab-label">Cr</span>
+                            <span class="lab-value" id="lab-cr">1.32</span>
+                        </div>
+                        <div class="lab-item">
+                            <span class="lab-label">ACR</span>
+                            <span class="lab-value" id="lab-acr">85</span>
+                        </div>
+                        <div class="lab-item">
+                            <span class="lab-label">TG</span>
+                            <span class="lab-value" id="lab-tg">145</span>
+                        </div>
+                        <div class="lab-item">
+                            <span class="lab-label">HDL</span>
+                            <span class="lab-value" id="lab-hdl">48</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Summary Button -->
+                <button class="ai-summary-btn" id="ai-summary-btn" onclick="openIntegratedCDS()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                        <path d="M12 2a10 10 0 0 1 10 10"/>
+                    </svg>
+                    AI 綜合建議
+                </button>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Modal for expanded views -->
+    <div id="disease-modal" class="modal" style="display: none;">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">詳細資訊</h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // Demo Mock Data
+        // ============================================
+        const mockMedications = [
+            { generic: 'Metformin', dose: '500mg BID', class: 'Biguanide' },
+            { generic: 'Empagliflozin', dose: '25mg QD', class: 'SGLT2i' },
+            { generic: 'Sitagliptin', dose: '100mg QD', class: 'DPP4i' },
+            { generic: 'Amlodipine', dose: '5mg QD', class: 'CCB' },
+            { generic: 'Lisinopril', dose: '10mg QD', class: 'ACEi' },
+            { generic: 'Rosuvastatin', dose: '10mg QD', class: 'Statin' },
+            { generic: 'Ezetimibe', dose: '10mg QD', class: 'Ezetimibe' },
+            { generic: 'Aspirin', dose: '100mg QD', class: 'Antiplatelet' }
+        ];
+
+        const mockLabData = {
+            hba1c: 7.2,
+            glucose: 118,
+            systolic: 138,
+            diastolic: 85,
+            totalCholesterol: 168,
+            ldl: 68,
+            hdl: 48,
+            triglycerides: 145,
+            egfr: 52,
+            creatinine: 1.32,
+            bun: 22,
+            acr: 85,
+            potassium: 4.2,
+            hemoglobin: 13.5,
+            lvef: 55,
+            bnp: 85,
+            heartRate: 72,
+            inr: 1.1
+        };
+
+        // Mock detected diseases (dm, htn, lipid, ckd are diagnosed)
+        const detectedDiseases = ['dm', 'htn', 'lipid', 'ckd'];
+
+        const DiseaseRegistry = {
+            dm: { name: '糖尿病', color: '#6366f1' },
+            htn: { name: '高血壓', color: '#ef4444' },
+            lipid: { name: '高血脂', color: '#f59e0b' },
+            ckd: { name: '慢性腎臟病', color: '#8b5cf6' },
+            hf: { name: '心衰竭', color: '#ec4899' },
+            af: { name: '心房顫動', color: '#06b6d4' }
+        };
+
+        let currentSelectedDisease = null;
+
+        // ============================================
+        // Initialization
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentDate();
+            renderMedicationsList();
+        });
+
+        function updateCurrentDate() {
+            const now = new Date();
+            const formatted = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+            document.getElementById('current-date').textContent = formatted;
+        }
+
+        // ============================================
+        // Medications View
+        // ============================================
+        function showMedicationsView() {
+            currentSelectedDisease = null;
+
+            document.getElementById('center-title').textContent = '目前用藥';
+            document.getElementById('center-subtitle').textContent = '';
+
+            document.getElementById('medications-view').classList.add('active');
+            document.getElementById('disease-view').classList.remove('active');
+
+            document.querySelectorAll('.disease-card').forEach(card => {
+                card.classList.remove('active');
+            });
+        }
+
+        function renderMedicationsList() {
+            const listEl = document.getElementById('medications-list');
+            if (!listEl) return;
+
+            listEl.innerHTML = mockMedications.map(med => `
+                <div class="med-item">
+                    <span class="med-item-icon">💊</span>
+                    <div class="med-item-info">
+                        <div class="med-item-name">${med.generic}</div>
+                        <div class="med-item-dose">${med.dose}</div>
+                    </div>
+                    <span class="med-item-class">${med.class}</span>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // Disease Selection
+        // ============================================
+        function selectDisease(diseaseId) {
+            currentSelectedDisease = diseaseId;
+
+            const config = DiseaseRegistry[diseaseId];
+            const hasDiagnosis = detectedDiseases.includes(diseaseId);
+
+            document.getElementById('center-title').textContent = config.name;
+            document.getElementById('center-subtitle').textContent = hasDiagnosis ? '' : '(無此診斷)';
+
+            document.getElementById('medications-view').classList.remove('active');
+            document.getElementById('disease-view').classList.add('active');
+
+            document.querySelectorAll('.disease-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.getElementById(`disease-${diseaseId}`).classList.add('active');
+
+            loadDiseaseDetail(diseaseId, hasDiagnosis);
+        }
+
+        function loadDiseaseDetail(diseaseId, hasDiagnosis) {
+            const detailEl = document.getElementById('disease-detail');
+            if (!detailEl) return;
+
+            let html = '';
+
+            if (!hasDiagnosis) {
+                html += `
+                    <div class="no-diagnosis-banner">
+                        <span class="banner-icon">ℹ️</span>
+                        <span class="banner-text">病患目前無${DiseaseRegistry[diseaseId].name}診斷，以下顯示相關檢驗數值</span>
+                    </div>
+                `;
+            }
+
+            html += buildSimpleDiseaseView(diseaseId);
+            detailEl.innerHTML = html;
+        }
+
+        function buildSimpleDiseaseView(diseaseId) {
+            switch (diseaseId) {
+                case 'dm': return buildDMSimpleView();
+                case 'htn': return buildHTNSimpleView();
+                case 'lipid': return buildLipidSimpleView();
+                case 'ckd': return buildCKDSimpleView();
+                case 'hf': return buildHFSimpleView();
+                case 'af': return buildAFSimpleView();
+                default: return '<div class="loading-placeholder">無資料</div>';
+            }
+        }
+
+        function buildDMSimpleView() {
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">血糖指標</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('HbA1c', mockLabData.hba1c, '%', 'warning')}
+                        ${buildMetricBox('空腹血糖', mockLabData.glucose, 'mg/dL', 'warning')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">腎臟篩檢</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('ACR', mockLabData.acr, 'mg/g', 'warning')}
+                        ${buildMetricBox('eGFR', mockLabData.egfr, 'mL/min', 'warning')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">CDS 建議</div>
+                    <div class="cds-recommendations">
+                        <div class="cds-item high">
+                            <span class="cds-priority">高</span>
+                            <div class="cds-content">
+                                <p>建議加入 GLP-1 RA 以改善血糖控制及心血管保護</p>
+                                <span class="cds-source">ADA 2026 §9.9</span>
+                            </div>
+                        </div>
+                        <div class="cds-item medium">
+                            <span class="cds-priority">中</span>
+                            <div class="cds-content">
+                                <p>SGLT2i 已使用，持續監測腎功能</p>
+                                <span class="cds-source">KDIGO 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function buildHTNSimpleView() {
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">血壓監測</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('收縮壓', mockLabData.systolic, 'mmHg', 'warning')}
+                        ${buildMetricBox('舒張壓', mockLabData.diastolic, 'mmHg', 'warning')}
+                        ${buildMetricBox('心率', mockLabData.heartRate, 'bpm', 'good')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">CDS 建議</div>
+                    <div class="cds-recommendations">
+                        <div class="cds-item medium">
+                            <span class="cds-priority">中</span>
+                            <div class="cds-content">
+                                <p>血壓偏高，考慮調整降壓藥物劑量，目標 < 130/80 mmHg</p>
+                                <span class="cds-source">台灣高血壓指引 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function buildLipidSimpleView() {
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">血脂檢驗</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('總膽固醇', mockLabData.totalCholesterol, 'mg/dL', '')}
+                        ${buildMetricBox('LDL-C', mockLabData.ldl, 'mg/dL', 'good')}
+                        ${buildMetricBox('HDL-C', mockLabData.hdl, 'mg/dL', '')}
+                        ${buildMetricBox('三酸甘油酯', mockLabData.triglycerides, 'mg/dL', '')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">CDS 建議</div>
+                    <div class="cds-recommendations">
+                        <div class="cds-item low">
+                            <span class="cds-priority">低</span>
+                            <div class="cds-content">
+                                <p>LDL 已達標 (< 70 mg/dL)，維持目前 Statin + Ezetimibe 治療</p>
+                                <span class="cds-source">ESC/EAS 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function buildCKDSimpleView() {
+            const hasDM = detectedDiseases.includes('dm');
+            const bpTarget = hasDM ? '<130/80 mmHg (CKD+DM)' : '<120 mmHg (單純CKD)';
+
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">腎功能指標</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('eGFR', mockLabData.egfr, 'mL/min', 'warning')}
+                        ${buildMetricBox('Creatinine', mockLabData.creatinine, 'mg/dL', '')}
+                        ${buildMetricBox('BUN', mockLabData.bun, 'mg/dL', '')}
+                        ${buildMetricBox('ACR', mockLabData.acr, 'mg/g', 'warning')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">電解質</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('K⁺', mockLabData.potassium, 'mEq/L', 'good')}
+                        ${buildMetricBox('Hb', mockLabData.hemoglobin, 'g/dL', 'good')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">血壓監測</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('血壓', `${mockLabData.systolic}/${mockLabData.diastolic}`, 'mmHg', 'warning')}
+                    </div>
+                    <p style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 8px;">目標: ${bpTarget}</p>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-title">CDS 建議</div>
+                    <div class="cds-recommendations">
+                        <div class="cds-item medium">
+                            <span class="cds-priority">中</span>
+                            <div class="cds-content">
+                                <p>ACR 85 mg/g (中度白蛋白尿)，持續 RASi + SGLT2i 治療</p>
+                                <span class="cds-source">KDIGO 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function buildHFSimpleView() {
+            const lvef = mockLabData.lvef;
+            let hfType = '未分類';
+            if (lvef <= 40) hfType = 'HFrEF';
+            else if (lvef <= 49) hfType = 'HFmrEF';
+            else hfType = 'HFpEF';
+
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">心臟功能</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('LVEF', mockLabData.lvef, '%', 'good')}
+                        ${buildMetricBox('NT-proBNP', mockLabData.bnp, 'pg/mL', 'good')}
+                        ${buildMetricBox('心率', mockLabData.heartRate, 'bpm', '')}
+                    </div>
+                    <p style="font-size: 0.875rem; margin-top: 8px;"><strong>分類:</strong> ${hfType}</p>
+                </div>
+            `;
+        }
+
+        function buildAFSimpleView() {
+            return `
+                <div class="detail-section">
+                    <div class="detail-section-title">心律監測</div>
+                    <div class="metrics-row">
+                        ${buildMetricBox('心率', mockLabData.heartRate, 'bpm', 'good')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // Helper Functions
+        // ============================================
+        function buildMetricBox(label, value, unit, statusClass) {
+            const displayValue = value != null ? (typeof value === 'number' ? (Number.isInteger(value) ? value : value.toFixed(1)) : value) : '--';
+            return `
+                <div class="metric-box ${statusClass}">
+                    <div class="metric-box-label">${label}</div>
+                    <div class="metric-box-value">${displayValue}</div>
+                    <div class="metric-box-unit">${unit}</div>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // Modal Functions
+        // ============================================
+        function openIntegratedCDS() {
+            const modal = document.getElementById('disease-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            title.textContent = 'AI 綜合建議報告';
+            body.innerHTML = `
+                <div class="ai-report">
+                    <div class="ai-section">
+                        <h3>📋 摘要</h3>
+                        <p>68歲男性，同時患有糖尿病、高血壓、高血脂及慢性腎臟病 (CKD G3a A2)。目前接受 SGLT2i、ACEi、Statin 等多重心腎保護藥物治療，血糖控制尚可但未達標，血壓偏高需調整。</p>
+                    </div>
+                    <div class="ai-section">
+                        <h3>⚡ 優先行動</h3>
+                        <ol>
+                            <li><strong>考慮加入 GLP-1 RA</strong>：HbA1c 7.2% 未達 <7% 目標，且有 ASCVD 高風險，GLP-1 RA 可改善血糖並提供心血管保護 (ADA 2026)</li>
+                            <li><strong>調整降壓藥物</strong>：目前 138/85 mmHg，CKD+DM 目標 <130/80 mmHg，考慮增加 ACEi 劑量或加第二種降壓藥 (Taiwan HTN 2022)</li>
+                            <li><strong>維持 Statin + Ezetimibe</strong>：LDL 68 mg/dL 已達高風險目標 <70 mg/dL (ESC/EAS 2025)</li>
+                        </ol>
+                    </div>
+                    <div class="ai-section">
+                        <h3>💊 用藥評估</h3>
+                        <ul>
+                            <li>✅ Empagliflozin (SGLT2i)：心腎保護，持續使用</li>
+                            <li>✅ Lisinopril (ACEi)：CKD 腎保護首選，考慮增量</li>
+                            <li>✅ Rosuvastatin + Ezetimibe：LDL 達標，維持</li>
+                            <li>⚠️ Metformin：eGFR 52，建議減量至 500mg BID</li>
+                        </ul>
+                    </div>
+                    <div class="ai-section">
+                        <h3>📊 監測計畫</h3>
+                        <table style="width:100%; font-size:0.875rem; border-collapse:collapse;">
+                            <tr style="border-bottom:1px solid var(--color-border);">
+                                <th style="text-align:left; padding:8px 0;">項目</th>
+                                <th style="text-align:center; padding:8px 0;">目前值</th>
+                                <th style="text-align:center; padding:8px 0;">目標</th>
+                                <th style="text-align:center; padding:8px 0;">頻率</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px 0;">HbA1c</td>
+                                <td style="text-align:center;">7.2%</td>
+                                <td style="text-align:center;"><7%</td>
+                                <td style="text-align:center;">每3個月</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px 0;">血壓</td>
+                                <td style="text-align:center;">138/85</td>
+                                <td style="text-align:center;"><130/80</td>
+                                <td style="text-align:center;">每次回診</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px 0;">eGFR/ACR</td>
+                                <td style="text-align:center;">52/85</td>
+                                <td style="text-align:center;">穩定</td>
+                                <td style="text-align:center;">每3-6個月</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px 0;">K⁺</td>
+                                <td style="text-align:center;">4.2</td>
+                                <td style="text-align:center;">3.5-5.0</td>
+                                <td style="text-align:center;">RASi 調量時</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('disease-modal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+    <style>
+        /* Additional Demo-specific styles */
+        .detail-section {
+            margin-bottom: 20px;
+        }
+        .detail-section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .metrics-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .metric-box {
+            flex: 1;
+            min-width: 100px;
+            background: var(--color-bg);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .metric-box.good {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .metric-box.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        .metric-box.danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .metric-box-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 4px;
+        }
+        .metric-box-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+        .metric-box-unit {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+        .no-diagnosis-banner {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .banner-icon {
+            font-size: 1.25rem;
+        }
+        .banner-text {
+            font-size: 0.875rem;
+            color: #3b82f6;
+        }
+        .cds-recommendations {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cds-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--color-bg);
+        }
+        .cds-item.high {
+            border-left: 3px solid #ef4444;
+        }
+        .cds-item.medium {
+            border-left: 3px solid #f59e0b;
+        }
+        .cds-item.low {
+            border-left: 3px solid #10b981;
+        }
+        .cds-priority {
+            font-size: 0.625rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .cds-item.high .cds-priority {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+        .cds-item.medium .cds-priority {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+        .cds-item.low .cds-priority {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+        .cds-content p {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+            color: var(--color-text);
+        }
+        .cds-source {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+        .ai-report {
+            font-size: 0.9375rem;
+        }
+        .ai-section {
+            margin-bottom: 24px;
+        }
+        .ai-section h3 {
+            font-size: 1rem;
+            margin: 0 0 12px;
+            color: var(--color-text);
+        }
+        .ai-section p,
+        .ai-section li {
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+        .ai-section ol,
+        .ai-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .ai-section li {
+            margin-bottom: 8px;
+        }
+    </style>
+</body>
+</html>

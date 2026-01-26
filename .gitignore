@@ -1,0 +1,19 @@
+# API Keys and secrets
+config.js
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Reports
+.reports/
+
+# PDF guidelines (too large for GitHub)
+*_guideline/*.pdf

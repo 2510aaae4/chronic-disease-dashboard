@@ -1,0 +1,331 @@
+{
+  "title": "KDIGO 2024 CKD Management CDS Rules",
+  "title_zh": "KDIGO 2024 慢性腎臟病管理指南 - 臨床決策支援規則",
+  "description": "Clinical decision support rules derived from KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+  "source": "KDIGO 2024 CKD Guideline",
+  "reference": "Kidney International (2024)",
+  "total_recommendations": 15,
+  "ckd_staging": {
+    "gfr_categories": [
+      { "stage": "G1", "egfr": "≥90", "description": "Normal or high", "description_zh": "正常或偏高" },
+      { "stage": "G2", "egfr": "60-89", "description": "Mildly decreased", "description_zh": "輕度降低" },
+      { "stage": "G3a", "egfr": "45-59", "description": "Mildly to moderately decreased", "description_zh": "輕中度降低" },
+      { "stage": "G3b", "egfr": "30-44", "description": "Moderately to severely decreased", "description_zh": "中重度降低" },
+      { "stage": "G4", "egfr": "15-29", "description": "Severely decreased", "description_zh": "重度降低" },
+      { "stage": "G5", "egfr": "<15", "description": "Kidney failure", "description_zh": "腎衰竭" }
+    ],
+    "acr_categories": [
+      { "stage": "A1", "acr": "<30", "description": "Normal to mildly increased", "description_zh": "正常至輕度增加" },
+      { "stage": "A2", "acr": "30-300", "description": "Moderately increased", "description_zh": "中度增加 (微量白蛋白尿)" },
+      { "stage": "A3", "acr": ">300", "description": "Severely increased", "description_zh": "重度增加 (巨量白蛋白尿)" }
+    ]
+  },
+  "medication_classes": {
+    "SGLT2i": {
+      "name": "SGLT2 Inhibitor",
+      "name_zh": "SGLT2 抑制劑",
+      "medications": ["dapagliflozin", "empagliflozin", "canagliflozin", "forxiga", "jardiance", "福適佳", "恩排糖"],
+      "note": "Recommended for CKD with eGFR ≥20 mL/min"
+    },
+    "ACEi": {
+      "name": "ACE Inhibitor",
+      "name_zh": "血管收縮素轉化酶抑制劑",
+      "medications": ["lisinopril", "enalapril", "ramipril", "captopril", "perindopril", "benazepril", "fosinopril", "quinapril"]
+    },
+    "ARB": {
+      "name": "Angiotensin Receptor Blocker",
+      "name_zh": "血管收縮素受體阻斷劑",
+      "medications": ["losartan", "valsartan", "candesartan", "irbesartan", "olmesartan", "telmisartan", "azilsartan"]
+    },
+    "Finerenone": {
+      "name": "Finerenone (non-steroidal MRA)",
+      "name_zh": "Finerenone (非類固醇 MRA)",
+      "medications": ["finerenone", "kerendia", "可申達"]
+    },
+    "Statin": {
+      "name": "Statin",
+      "name_zh": "Statin 類降血脂藥",
+      "medications": ["atorvastatin", "rosuvastatin", "simvastatin", "pravastatin", "pitavastatin", "fluvastatin"]
+    }
+  },
+  "medications_caution": {
+    "description": "Medications requiring dose adjustment or caution in CKD",
+    "description_zh": "CKD 患者需調整劑量或謹慎使用的藥物",
+    "items": [
+      {
+        "class": "NSAIDs",
+        "name_zh": "非類固醇消炎藥",
+        "medications": ["ibuprofen", "naproxen", "diclofenac", "celecoxib", "meloxicam", "indomethacin", "ketorolac"],
+        "reason": "May worsen renal function, avoid in eGFR <30"
+      },
+      {
+        "class": "Metformin",
+        "name_zh": "Metformin",
+        "medications": ["metformin", "glucophage", "庫魯化"],
+        "reason": "Dose adjustment required: reduce dose if eGFR 30-45, contraindicated if eGFR <30",
+        "thresholds": {
+          "reduce_dose": 45,
+          "contraindicated": 30
+        }
+      },
+      {
+        "class": "Gabapentinoids",
+        "name_zh": "Gabapentin 類藥物",
+        "medications": ["gabapentin", "pregabalin"],
+        "reason": "Renally excreted, requires dose adjustment in CKD"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "section": 1,
+      "title": "SGLT2 Inhibitor Therapy",
+      "title_zh": "SGLT2 抑制劑治療",
+      "recommendations": [
+        {
+          "id": "CKD3.7.1",
+          "text": "We recommend treating patients with T2D, CKD, and eGFR ≥20 mL/min/1.73m² with an SGLT2i.",
+          "text_zh": "建議第二型糖尿病合併 CKD 且 eGFR ≥20 mL/min 的患者使用 SGLT2i。",
+          "evidence_level": "A",
+          "strength": "1",
+          "category": "sglt2i",
+          "action": "recommend_sglt2i_dm_ckd",
+          "criteria": {
+            "requires_dm": true,
+            "egfr_min": 20
+          }
+        },
+        {
+          "id": "CKD3.7.2",
+          "text": "We suggest treating patients with CKD without T2D with an SGLT2i when eGFR ≥20 mL/min/1.73m².",
+          "text_zh": "建議無糖尿病的 CKD 患者，若 eGFR ≥20 mL/min，可考慮使用 SGLT2i。",
+          "evidence_level": "B",
+          "strength": "2",
+          "category": "sglt2i",
+          "action": "suggest_sglt2i_ckd",
+          "criteria": {
+            "requires_dm": false,
+            "egfr_min": 20
+          }
+        },
+        {
+          "id": "CKD3.7.3",
+          "text": "Once initiated, SGLT2i may be continued even if eGFR falls below 20 mL/min/1.73m², unless not tolerated or kidney replacement therapy is initiated.",
+          "text_zh": "一旦開始使用 SGLT2i，即使 eGFR 降至 20 mL/min 以下仍可繼續使用，除非無法耐受或開始腎臟替代療法。",
+          "evidence_level": "C",
+          "strength": "practice point",
+          "category": "sglt2i",
+          "action": "continue_sglt2i",
+          "criteria": {
+            "already_on_sglt2i": true
+          }
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "title": "RAS Inhibitor Therapy",
+      "title_zh": "腎素-血管收縮素系統抑制劑治療",
+      "recommendations": [
+        {
+          "id": "CKD3.6.1",
+          "text": "We recommend starting ACEi or ARB for patients with high blood pressure, CKD, and severely increased albuminuria (ACR ≥300 mg/g) with or without diabetes.",
+          "text_zh": "建議高血壓合併 CKD 且有嚴重蛋白尿 (ACR ≥300 mg/g) 的患者，無論是否有糖尿病，應開始使用 ACEi 或 ARB。",
+          "evidence_level": "A",
+          "strength": "1",
+          "category": "rasi",
+          "action": "recommend_acei_arb_a3",
+          "criteria": {
+            "acr_min": 300,
+            "requires_hypertension": true
+          }
+        },
+        {
+          "id": "CKD3.6.2",
+          "text": "We suggest starting ACEi or ARB for patients with high blood pressure, CKD, and moderately increased albuminuria (ACR 30-300 mg/g) with or without diabetes.",
+          "text_zh": "建議高血壓合併 CKD 且有中度蛋白尿 (ACR 30-300 mg/g) 的患者，無論是否有糖尿病，考慮開始使用 ACEi 或 ARB。",
+          "evidence_level": "C",
+          "strength": "2",
+          "category": "rasi",
+          "action": "suggest_acei_arb_a2",
+          "criteria": {
+            "acr_min": 30,
+            "acr_max": 300,
+            "requires_hypertension": true
+          }
+        },
+        {
+          "id": "CKD3.6.3",
+          "text": "We recommend titrating ACEi or ARB to the maximum approved or highest tolerated dose to achieve the benefits for which these agents have been shown to be effective.",
+          "text_zh": "建議將 ACEi 或 ARB 調整至最大核准劑量或最高耐受劑量，以達到最佳療效。",
+          "evidence_level": "B",
+          "strength": "1",
+          "category": "rasi",
+          "action": "titrate_acei_arb"
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "title": "Finerenone Therapy",
+      "title_zh": "Finerenone 治療",
+      "recommendations": [
+        {
+          "id": "CKD3.8.1",
+          "text": "We recommend a non-steroidal MRA with proven kidney and cardiovascular benefit for patients with T2D, eGFR ≥25 mL/min/1.73m², normal serum potassium, and albuminuria (ACR ≥30 mg/g) who are already treated with maximum tolerated dose of ACEi or ARB.",
+          "text_zh": "建議第二型糖尿病合併 eGFR ≥25、血鉀正常、且有蛋白尿 (ACR ≥30) 的患者，在已使用最大耐受劑量 ACEi/ARB 的情況下，加用 Finerenone。",
+          "evidence_level": "A",
+          "strength": "1",
+          "category": "finerenone",
+          "action": "recommend_finerenone",
+          "criteria": {
+            "requires_dm": true,
+            "egfr_min": 25,
+            "acr_min": 30,
+            "potassium_max": 5.0,
+            "requires_acei_arb": true
+          }
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "title": "Blood Pressure Management",
+      "title_zh": "血壓管理",
+      "recommendations": [
+        {
+          "id": "CKD3.4.1",
+          "text": "We suggest targeting a systolic blood pressure <120 mmHg in patients with high blood pressure and CKD, when tolerated, using standardized office BP measurement.",
+          "text_zh": "建議 CKD 合併高血壓患者，若可耐受，應將收縮壓控制在 120 mmHg 以下。",
+          "evidence_level": "B",
+          "strength": "2",
+          "category": "blood_pressure",
+          "action": "target_sbp_120",
+          "criteria": {
+            "sbp_target": 120
+          }
+        }
+      ]
+    },
+    {
+      "section": 5,
+      "title": "Lipid Management",
+      "title_zh": "血脂管理",
+      "recommendations": [
+        {
+          "id": "CKD3.15.1",
+          "text": "We recommend treatment with a statin or statin/ezetimibe combination in patients aged ≥50 years with eGFR <60 mL/min/1.73m² but not treated with chronic dialysis or kidney transplantation.",
+          "text_zh": "建議年齡 ≥50 歲且 eGFR <60 mL/min 的 CKD 患者 (非透析或移植) 使用 Statin 或 Statin/Ezetimibe 組合治療。",
+          "evidence_level": "A",
+          "strength": "1",
+          "category": "statin",
+          "action": "recommend_statin",
+          "criteria": {
+            "age_min": 50,
+            "egfr_max": 60,
+            "not_on_dialysis": true
+          }
+        }
+      ]
+    },
+    {
+      "section": 6,
+      "title": "Monitoring and Safety",
+      "title_zh": "監測與安全",
+      "recommendations": [
+        {
+          "id": "CKD4.1.1",
+          "text": "Monitor eGFR and ACR at least annually in patients with CKD. More frequent monitoring is needed for higher risk patients (lower eGFR, higher ACR, or rapid progression).",
+          "text_zh": "CKD 患者應至少每年監測 eGFR 及 ACR。高風險患者 (eGFR 較低、ACR 較高或快速惡化者) 需更頻繁監測。",
+          "evidence_level": "C",
+          "strength": "practice point",
+          "category": "monitoring",
+          "action": "monitor_egfr_acr",
+          "frequency": {
+            "G1-G2_A1": "annual",
+            "G3a_A1": "annual",
+            "G3a_A2": "every 6 months",
+            "G3b_A2": "every 3-6 months",
+            "G4-G5_any": "every 1-3 months"
+          }
+        },
+        {
+          "id": "CKD4.1.2",
+          "text": "Monitor serum potassium regularly in patients on ACEi, ARB, or MRA therapy, particularly when initiating or increasing doses.",
+          "text_zh": "使用 ACEi、ARB 或 MRA 的患者應定期監測血鉀，尤其在起始或增加劑量時。",
+          "evidence_level": "C",
+          "strength": "practice point",
+          "category": "monitoring",
+          "action": "monitor_potassium",
+          "thresholds": {
+            "potassium_high": 5.5,
+            "potassium_caution": 5.0
+          }
+        },
+        {
+          "id": "CKD4.2.1",
+          "text": "Avoid NSAIDs in patients with CKD, particularly those with eGFR <30 mL/min/1.73m².",
+          "text_zh": "CKD 患者應避免使用 NSAIDs，尤其是 eGFR <30 mL/min 的患者。",
+          "evidence_level": "B",
+          "strength": "practice point",
+          "category": "medication_safety",
+          "action": "warn_nsaids",
+          "criteria": {
+            "egfr_caution": 60,
+            "egfr_avoid": 30
+          }
+        }
+      ]
+    },
+    {
+      "section": 7,
+      "title": "Diabetes Medication Adjustment",
+      "title_zh": "糖尿病藥物調整",
+      "recommendations": [
+        {
+          "id": "CKD5.1.1",
+          "text": "Reduce metformin dose by 50% when eGFR falls below 45 mL/min/1.73m², and discontinue when eGFR falls below 30 mL/min/1.73m².",
+          "text_zh": "當 eGFR 降至 45 mL/min 以下時，應將 Metformin 劑量減半；eGFR 降至 30 mL/min 以下時應停用。",
+          "evidence_level": "B",
+          "strength": "1",
+          "category": "medication_adjustment",
+          "action": "adjust_metformin",
+          "criteria": {
+            "reduce_at_egfr": 45,
+            "stop_at_egfr": 30
+          }
+        },
+        {
+          "id": "CKD5.1.2",
+          "text": "Reduce sulfonylurea doses in patients with decreased eGFR to reduce hypoglycemia risk. Consider switching to agents with lower hypoglycemia risk.",
+          "text_zh": "eGFR 降低的患者應減少 Sulfonylurea 劑量以降低低血糖風險，可考慮改用低血糖風險較低的藥物。",
+          "evidence_level": "C",
+          "strength": "practice point",
+          "category": "medication_adjustment",
+          "action": "adjust_sulfonylurea"
+        }
+      ]
+    },
+    {
+      "section": 8,
+      "title": "Nephrology Referral",
+      "title_zh": "腎臟科轉介",
+      "recommendations": [
+        {
+          "id": "CKD6.1.1",
+          "text": "Refer to nephrology services for evaluation and management when eGFR <30 mL/min/1.73m² (G4-G5), persistent significant albuminuria (ACR ≥300), or rapid eGFR decline (>5 mL/min/year).",
+          "text_zh": "當 eGFR <30 mL/min (G4-G5)、持續嚴重蛋白尿 (ACR ≥300)、或 eGFR 快速下降 (>5 mL/min/年) 時，應轉介腎臟科。",
+          "evidence_level": "C",
+          "strength": "practice point",
+          "category": "referral",
+          "action": "refer_nephrology",
+          "criteria": {
+            "egfr_threshold": 30,
+            "acr_threshold": 300,
+            "rapid_decline_rate": 5
+          }
+        }
+      ]
+    }
+  ]
+}

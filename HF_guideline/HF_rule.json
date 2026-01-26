@@ -1,0 +1,197 @@
+{
+  "title": "ESC 2021/2023 Heart Failure Management CDS Rules",
+  "title_zh": "ESC 2021/2023 心衰竭管理指南 - 臨床決策支援規則",
+  "description": "Recommendations for GDMT, device therapy, and medication safety in heart failure based on ESC 2021 Guidelines with 2023 Focused Update",
+  "source": "2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure, 2023 Focused Update",
+  "reference": "European Heart Journal (2021, 2023)",
+  "total_recommendations": 6,
+  "hf_classification": {
+    "HFrEF": {
+      "name": "Heart Failure with Reduced Ejection Fraction",
+      "name_zh": "心射出分率降低型心衰竭",
+      "criteria": "LVEF ≤40%",
+      "treatment": "All 4 pillars of GDMT recommended"
+    },
+    "HFmrEF": {
+      "name": "Heart Failure with Mildly Reduced Ejection Fraction",
+      "name_zh": "心射出分率輕度降低型心衰竭",
+      "criteria": "LVEF 41-49%",
+      "treatment": "GDMT may be considered, SGLT2i recommended"
+    },
+    "HFpEF": {
+      "name": "Heart Failure with Preserved Ejection Fraction",
+      "name_zh": "心射出分率保留型心衰竭",
+      "criteria": "LVEF ≥50%",
+      "treatment": "SGLT2i recommended, symptom management"
+    }
+  },
+  "gdmt_pillars": {
+    "description": "Guideline-Directed Medical Therapy - Four Pillars for HFrEF",
+    "description_zh": "指引建議藥物治療 - HFrEF 四大支柱",
+    "pillars": [
+      {
+        "id": "ARNI_ACEi_ARB",
+        "name": "ARNI/ACEi/ARB",
+        "name_zh": "ARNI/ACEi/ARB",
+        "medications": {
+          "ARNI": ["sacubitril/valsartan", "entresto", "健安心"],
+          "ACEi": ["lisinopril", "enalapril", "ramipril", "captopril", "perindopril", "benazepril"],
+          "ARB": ["losartan", "valsartan", "candesartan", "irbesartan", "olmesartan", "telmisartan"]
+        },
+        "note": "ARNI preferred over ACEi/ARB if tolerated"
+      },
+      {
+        "id": "beta_blocker",
+        "name": "Beta-blocker",
+        "name_zh": "β阻斷劑",
+        "medications": ["carvedilol", "metoprolol succinate", "bisoprolol", "nebivolol"],
+        "note": "Evidence-based beta-blockers only"
+      },
+      {
+        "id": "MRA",
+        "name": "Mineralocorticoid Receptor Antagonist",
+        "name_zh": "醛固酮受體拮抗劑",
+        "medications": ["spironolactone", "eplerenone"],
+        "note": "Monitor potassium and renal function"
+      },
+      {
+        "id": "SGLT2i",
+        "name": "SGLT2 Inhibitor",
+        "name_zh": "SGLT2抑制劑",
+        "medications": ["dapagliflozin", "empagliflozin", "forxiga", "jardiance", "福適佳", "恩排糖"],
+        "note": "Recommended for all HF regardless of EF or diabetes status"
+      }
+    ]
+  },
+  "medications_to_avoid": {
+    "description": "Medications to avoid or use with caution in heart failure",
+    "description_zh": "心衰竭患者應避免或謹慎使用的藥物",
+    "avoid": [
+      {
+        "class": "NSAIDs",
+        "name_zh": "非類固醇消炎藥",
+        "medications": ["ibuprofen", "naproxen", "diclofenac", "celecoxib", "meloxicam", "indomethacin", "ketorolac"],
+        "reason": "Cause fluid retention, worsen HF, impair renal function"
+      },
+      {
+        "class": "Non-DHP CCB",
+        "name_zh": "非二氫吡啶類鈣離子阻斷劑",
+        "medications": ["diltiazem", "verapamil", "合必爽", "心舒平"],
+        "reason": "Negative inotropic effect, may worsen HFrEF"
+      },
+      {
+        "class": "Thiazolidinediones",
+        "name_zh": "TZD 類降血糖藥",
+        "medications": ["pioglitazone", "rosiglitazone", "愛妥糖", "梵帝雅"],
+        "reason": "Cause fluid retention, increase HF hospitalization risk"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "section": 1,
+      "title": "GDMT Assessment",
+      "title_zh": "GDMT 用藥評估",
+      "recommendations": [
+        {
+          "id": "HF1.1",
+          "text": "In patients with HFrEF, treatment with an ARNI, beta-blocker, MRA, and SGLT2i is recommended to reduce mortality and HF hospitalization.",
+          "text_zh": "HFrEF 患者建議使用 ARNI、β阻斷劑、MRA 及 SGLT2i 四大支柱藥物，以降低死亡率及心衰竭住院風險。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "gdmt",
+          "action": "check_gdmt_pillars",
+          "applies_to": ["HFrEF"]
+        },
+        {
+          "id": "HF1.2",
+          "text": "An SGLT2 inhibitor (dapagliflozin or empagliflozin) is recommended for patients with HFmrEF or HFpEF to reduce the risk of HF hospitalization and cardiovascular death.",
+          "text_zh": "HFmrEF 或 HFpEF 患者建議使用 SGLT2i (dapagliflozin 或 empagliflozin)，以降低心衰竭住院及心血管死亡風險。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "sglt2i",
+          "action": "recommend_sglt2i",
+          "applies_to": ["HFrEF", "HFmrEF", "HFpEF"]
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "title": "Safety Monitoring",
+      "title_zh": "安全監測",
+      "recommendations": [
+        {
+          "id": "HF2.1",
+          "text": "Regular monitoring of renal function and potassium is recommended in patients on RAAS inhibitors and MRAs, especially when initiating or up-titrating.",
+          "text_zh": "使用 RAAS 抑制劑及 MRA 的患者應定期監測腎功能及血鉀，尤其在起始或調整劑量時。",
+          "evidence_level": "C",
+          "class": "I",
+          "category": "monitoring",
+          "action": "monitor_renal_potassium",
+          "thresholds": {
+            "potassium_high": 5.5,
+            "potassium_caution": 5.0,
+            "egfr_caution": 30
+          }
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "title": "Device Therapy",
+      "title_zh": "裝置治療",
+      "recommendations": [
+        {
+          "id": "HF3.1",
+          "text": "An ICD is recommended to reduce the risk of sudden death and all-cause mortality in patients with symptomatic HF (NYHA class II-III) with LVEF ≤35% despite ≥3 months of OMT.",
+          "text_zh": "症狀性心衰竭 (NYHA II-III) 且 LVEF ≤35%，經過至少3個月最佳藥物治療後，建議評估植入式心臟去顫器 (ICD) 以降低猝死風險。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "device",
+          "action": "evaluate_icd",
+          "criteria": {
+            "lvef_threshold": 35
+          }
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "title": "Additional Therapies",
+      "title_zh": "其他治療",
+      "recommendations": [
+        {
+          "id": "HF4.1",
+          "text": "Ivabradine should be considered to reduce HF hospitalization and CV mortality in symptomatic patients with LVEF ≤35%, in sinus rhythm with resting HR ≥70 bpm, who are on maximum tolerated beta-blocker dose.",
+          "text_zh": "HFrEF (LVEF ≤35%) 合併竇性心律、休息心率 ≥70 bpm，且已使用最大耐受劑量 β阻斷劑的患者，應考慮加用 Ivabradine 以降低心衰竭住院及死亡風險。",
+          "evidence_level": "B",
+          "class": "IIa",
+          "category": "ivabradine",
+          "action": "consider_ivabradine",
+          "criteria": {
+            "lvef_threshold": 35,
+            "hr_threshold": 70,
+            "requires_beta_blocker": true,
+            "requires_sinus_rhythm": true
+          }
+        }
+      ]
+    },
+    {
+      "section": 5,
+      "title": "Medication Safety",
+      "title_zh": "用藥安全",
+      "recommendations": [
+        {
+          "id": "HF5.1",
+          "text": "NSAIDs, non-dihydropyridine CCBs (diltiazem, verapamil), and thiazolidinediones should be avoided in patients with HF as they may worsen symptoms and outcomes.",
+          "text_zh": "心衰竭患者應避免使用 NSAIDs、非二氫吡啶類鈣離子阻斷劑 (diltiazem、verapamil) 及 TZD 類降血糖藥，因可能惡化症狀及預後。",
+          "evidence_level": "B",
+          "class": "III",
+          "category": "avoid_medications",
+          "action": "warn_harmful_meds"
+        }
+      ]
+    }
+  ]
+}

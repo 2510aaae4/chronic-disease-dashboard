@@ -1,0 +1,427 @@
+{
+  "guideline": "2022 Taiwan Guidelines for the Management of Hypertension",
+  "guideline_zh": "2022 台灣高血壓指引",
+  "source": "Taiwan Society of Cardiology / Taiwan Hypertension Society",
+  "version": "2022",
+  "last_updated": "2026-01-21",
+  "total_recommendations": 28,
+  "categories": {
+    "bp_target_general": "通用血壓目標",
+    "bp_target_dm": "糖尿病血壓目標",
+    "bp_target_chd": "冠心病血壓目標",
+    "bp_target_stroke": "中風血壓目標",
+    "bp_target_ckd": "慢性腎臟病血壓目標",
+    "bp_target_hf": "心衰竭血壓目標",
+    "bp_target_elderly": "老年血壓目標",
+    "lifestyle": "生活型態調整",
+    "pharmacotherapy": "藥物治療",
+    "contraindication": "禁忌"
+  },
+  "recommendations": [
+    {
+      "id": "HTN6.1",
+      "text": "A universal BP target of < 130/80 mmHg, based on HBPM obtained according to the 722 protocol, is recommended for all hypertensive patients.",
+      "text_zh": "建議所有高血壓患者之通用血壓目標為 < 130/80 mmHg（依 722 protocol 居家血壓測量）。",
+      "category": "bp_target_general",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "bp_target": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN6.2",
+      "text": "The SBP target can be < 120 mmHg for patients with ASCVD or at high CV risk, if tolerable.",
+      "text_zh": "ASCVD 或高心血管風險患者，如可耐受，SBP 目標可 < 120 mmHg。",
+      "category": "bp_target_general",
+      "cor": "IIa",
+      "loe": "B",
+      "population": "ascvd_or_high_cv_risk",
+      "conditions": ["ascvd", "high_cv_risk"],
+      "bp_target": {
+        "sbp": 120,
+        "operator": "<"
+      },
+      "priority": "medium"
+    },
+    {
+      "id": "HTN6.3",
+      "text": "A BP level of ≥ 140/90 mmHg should be the threshold for low-risk (no established ASCVD or HMOD, and < 3 ASCVD risk factors) hypertensive patients to initiate pharmacological treatment.",
+      "text_zh": "低風險患者（無 ASCVD/HMOD，且風險因子 < 3）之藥物治療閾值為 ≥ 140/90 mmHg。",
+      "category": "bp_target_general",
+      "cor": "I",
+      "loe": "A",
+      "population": "low_risk",
+      "conditions": ["no_ascvd", "no_hmod", "risk_factors_lt_3"],
+      "bp_threshold": {
+        "sbp": 140,
+        "dbp": 90,
+        "operator": ">="
+      },
+      "action": "initiate_pharmacotherapy",
+      "priority": "high"
+    },
+    {
+      "id": "HTN6.4",
+      "text": "For other hypertensive patients, a BP level of ≥ 130/80 mmHg is recommended as the threshold to initiate pharmacological treatment.",
+      "text_zh": "其他高血壓患者之藥物治療閾值為 ≥ 130/80 mmHg。",
+      "category": "bp_target_general",
+      "cor": "I",
+      "loe": "A",
+      "population": "non_low_risk",
+      "bp_threshold": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": ">="
+      },
+      "action": "initiate_pharmacotherapy",
+      "priority": "high"
+    },
+    {
+      "id": "HTN11.1",
+      "text": "For patients with diabetes mellitus, a BP target of < 130/80 mmHg, based on HBPM or standardized office BP, is recommended.",
+      "text_zh": "糖尿病患者血壓目標建議 < 130/80 mmHg。",
+      "category": "bp_target_dm",
+      "cor": "I",
+      "loe": "B",
+      "population": "diabetes",
+      "conditions": ["diabetes"],
+      "bp_target": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN12.1",
+      "text": "For patients with coronary heart disease, a BP target of < 130/80 mmHg is recommended.",
+      "text_zh": "冠心病患者血壓目標建議 < 130/80 mmHg。",
+      "category": "bp_target_chd",
+      "cor": "I",
+      "loe": "A",
+      "population": "chd",
+      "conditions": ["coronary_heart_disease"],
+      "bp_target": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN13.1",
+      "text": "A BP target of < 130/80 mmHg should be considered for most patients in the chronic stage of stroke.",
+      "text_zh": "慢性期中風患者血壓目標建議 < 130/80 mmHg。",
+      "category": "bp_target_stroke",
+      "cor": "IIa",
+      "loe": "A",
+      "population": "stroke_chronic",
+      "conditions": ["stroke"],
+      "bp_target": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": "<"
+      },
+      "priority": "medium"
+    },
+    {
+      "id": "HTN13.2",
+      "text": "The initial BP target is < 140/90 mmHg in the convalescence stage regardless of extracranial/intracranial large vessel disease or cerebral small vessel disease.",
+      "text_zh": "中風恢復期初始血壓目標為 < 140/90 mmHg。",
+      "category": "bp_target_stroke",
+      "cor": "I",
+      "loe": "B",
+      "population": "stroke_convalescence",
+      "conditions": ["stroke_recent"],
+      "bp_target": {
+        "sbp": 140,
+        "dbp": 90,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN14.1",
+      "text": "For patients with non-dialysis CKD, an SBP target of < 130 mmHg, based on HBPM or standardized office BP, is recommended.",
+      "text_zh": "非透析 CKD 患者 SBP 目標建議 < 130 mmHg。",
+      "category": "bp_target_ckd",
+      "cor": "I",
+      "loe": "B",
+      "population": "ckd_non_dialysis",
+      "conditions": ["ckd", "non_dialysis"],
+      "bp_target": {
+        "sbp": 130,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN14.2",
+      "text": "If patients with CKD tolerate well, an SBP target of < 120 mmHg could be considered.",
+      "text_zh": "CKD 患者如可耐受，SBP 目標可考慮 < 120 mmHg。",
+      "category": "bp_target_ckd",
+      "cor": "IIb",
+      "loe": "B",
+      "population": "ckd_non_dialysis",
+      "conditions": ["ckd", "non_dialysis", "tolerable"],
+      "bp_target": {
+        "sbp": 120,
+        "operator": "<"
+      },
+      "priority": "low"
+    },
+    {
+      "id": "HTN14.3",
+      "text": "For dialysis CKD patients, interdialytic home BP target of < 130/80 mmHg may be considered.",
+      "text_zh": "透析患者透析間居家血壓目標可考慮 < 130/80 mmHg。",
+      "category": "bp_target_ckd",
+      "cor": "IIb",
+      "loe": "C",
+      "population": "ckd_dialysis",
+      "conditions": ["ckd", "dialysis"],
+      "bp_target": {
+        "sbp": 130,
+        "dbp": 80,
+        "operator": "<"
+      },
+      "priority": "low"
+    },
+    {
+      "id": "HTN14.4",
+      "text": "Renin-angiotensin system inhibitor is the antihypertensive drug of choice for CKD patients with or without diabetes.",
+      "text_zh": "CKD 患者（不論有無糖尿病）首選 RAS 抑制劑（ACEi/ARB）。",
+      "category": "pharmacotherapy",
+      "cor": "I",
+      "loe": "A",
+      "population": "ckd",
+      "conditions": ["ckd"],
+      "action": "recommend_rasi",
+      "drug_class": ["acei", "arb"],
+      "priority": "high"
+    },
+    {
+      "id": "HTN15.1",
+      "text": "For hypertensive patients with chronic heart failure, the SBP threshold for pharmacological therapy is ≥ 130 mmHg.",
+      "text_zh": "心衰竭患者藥物治療閾值為 SBP ≥ 130 mmHg。",
+      "category": "bp_target_hf",
+      "cor": "I",
+      "loe": "C",
+      "population": "heart_failure",
+      "conditions": ["heart_failure"],
+      "bp_threshold": {
+        "sbp": 130,
+        "operator": ">="
+      },
+      "action": "initiate_pharmacotherapy",
+      "priority": "high"
+    },
+    {
+      "id": "HTN15.2",
+      "text": "For hypertensive patients with chronic heart failure, the SBP target for pharmacological therapy is < 130 mmHg.",
+      "text_zh": "心衰竭患者 SBP 目標為 < 130 mmHg。",
+      "category": "bp_target_hf",
+      "cor": "I",
+      "loe": "C",
+      "population": "heart_failure",
+      "conditions": ["heart_failure"],
+      "bp_target": {
+        "sbp": 130,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN17.1",
+      "text": "For patients aged ≥ 65 years, the SBP threshold for pharmacological therapy is ≥ 130 mmHg.",
+      "text_zh": "≥ 65 歲患者藥物治療閾值為 SBP ≥ 130 mmHg。",
+      "category": "bp_target_elderly",
+      "cor": "I",
+      "loe": "B",
+      "population": "elderly",
+      "conditions": ["age_gte_65"],
+      "bp_threshold": {
+        "sbp": 130,
+        "operator": ">="
+      },
+      "action": "initiate_pharmacotherapy",
+      "priority": "high"
+    },
+    {
+      "id": "HTN17.2",
+      "text": "For patients aged ≥ 65 years, the SBP target for pharmacological therapy is < 130 mmHg.",
+      "text_zh": "≥ 65 歲患者 SBP 目標為 < 130 mmHg。",
+      "category": "bp_target_elderly",
+      "cor": "I",
+      "loe": "B",
+      "population": "elderly",
+      "conditions": ["age_gte_65"],
+      "bp_target": {
+        "sbp": 130,
+        "operator": "<"
+      },
+      "priority": "high"
+    },
+    {
+      "id": "HTN7.2",
+      "text": "Sodium intake should be restricted within 2-4 g/day (5-10 g of salt per day) for better BP control and lower CV risk.",
+      "text_zh": "鈉攝取應限制在 2-4 g/天（鹽 5-10 g/天）以改善血壓控制及降低心血管風險。",
+      "category": "lifestyle",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "sodium_restriction",
+      "priority": "medium"
+    },
+    {
+      "id": "HTN7.4",
+      "text": "Alcohol consumption should be limited to < 100 g/week (14 g/day) in men and < 50 g/week (7 g/day) in women to improve BP control and lower the risk of all-cause mortality.",
+      "text_zh": "男性酒精攝取應限制 < 100 g/週，女性 < 50 g/週，以改善血壓控制及降低死亡風險。",
+      "category": "lifestyle",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "alcohol_limitation",
+      "priority": "medium"
+    },
+    {
+      "id": "HTN7.7",
+      "text": "An ideal body mass index is 20-24.9 kg/m² to improve BP control and lower the risk of all-cause mortality.",
+      "text_zh": "理想 BMI 為 20-24.9 kg/m²，以改善血壓控制及降低死亡風險。",
+      "category": "lifestyle",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "weight_management",
+      "bmi_target": {
+        "min": 20,
+        "max": 24.9
+      },
+      "priority": "medium"
+    },
+    {
+      "id": "HTN7.8",
+      "text": "Cessation of cigarette smoking, irrespective of conventional or electronic cigarettes, should be an integral part of lifestyle modification to reduce overall CV risk.",
+      "text_zh": "戒菸（含傳統及電子菸）應為生活型態調整之重要一環，以降低整體心血管風險。",
+      "category": "lifestyle",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "smoking_cessation",
+      "priority": "high"
+    },
+    {
+      "id": "HTN7.11",
+      "text": "Regular aerobic exercise (at least 30 min of moderate-intensity exercise on 5-7 days/week), with or without resistance exercise, is recommended to improve BP control and reduce CV mortality.",
+      "text_zh": "建議規律有氧運動（每週 5-7 天，每次至少 30 分鐘中等強度），以改善血壓控制及降低心血管死亡率。",
+      "category": "lifestyle",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "exercise_aerobic",
+      "exercise_target": {
+        "frequency": "5-7 days/week",
+        "duration": "≥30 min",
+        "intensity": "moderate"
+      },
+      "priority": "medium"
+    },
+    {
+      "id": "HTN7.12",
+      "text": "High-intensity exercise is not recommended for patients with uncontrolled hypertension (SBP > 160 mmHg).",
+      "text_zh": "未控制高血壓（SBP > 160 mmHg）患者不建議高強度運動。",
+      "category": "lifestyle",
+      "cor": "III",
+      "loe": "C",
+      "population": "uncontrolled_htn",
+      "conditions": ["sbp_gt_160"],
+      "action": "avoid_high_intensity_exercise",
+      "priority": "high"
+    },
+    {
+      "id": "HTN8.1",
+      "text": "All 5 major antihypertensive drugs (ACE inhibitors, ARBs, β-blockers, CCBs, and thiazide diuretics) are first-line antihypertensive drugs.",
+      "text_zh": "五大類降壓藥物（ACEi、ARB、β-blocker、CCB、Thiazide）均為第一線降壓藥物。",
+      "category": "pharmacotherapy",
+      "cor": "I",
+      "loe": "B",
+      "population": "all_htn",
+      "action": "first_line_therapy",
+      "drug_class": ["acei", "arb", "beta_blocker", "ccb", "thiazide"],
+      "priority": "info",
+      "special_notes": {
+        "heart_failure": "心衰竭患者應優先選擇 DHP 類 CCB (如 Amlodipine)，避免 non-DHP CCB (Diltiazem/Verapamil)，因 non-DHP CCB 具負性肌力作用，可能惡化 HFrEF/HFmrEF (ESC HF5.1)"
+      }
+    },
+    {
+      "id": "HTN8.2",
+      "text": "Spironolactone is recommended as one of the second-line antihypertensive drugs.",
+      "text_zh": "Spironolactone 為第二線降壓藥物。",
+      "category": "pharmacotherapy",
+      "cor": "I",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "second_line_therapy",
+      "drug_class": ["mra"],
+      "drug_name": "spironolactone",
+      "priority": "info"
+    },
+    {
+      "id": "HTN8.8",
+      "text": "Any combination between direct renin inhibitor, ACE inhibitor and ARB is contraindicated.",
+      "text_zh": "禁止 DRI、ACEi、ARB 任意組合併用。",
+      "category": "contraindication",
+      "cor": "III",
+      "loe": "A",
+      "population": "all_htn",
+      "action": "contraindicated_combination",
+      "contraindicated_combinations": [
+        ["dri", "acei"],
+        ["dri", "arb"],
+        ["acei", "arb"],
+        ["dri", "acei", "arb"]
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "HTN8.10",
+      "text": "Shifting to drugs with a longer-acting antihypertensive effect is recommended for uncontrolled evening hypertension.",
+      "text_zh": "傍晚高血壓未控制者，建議換用長效降壓藥物。",
+      "category": "pharmacotherapy",
+      "cor": "IIa",
+      "loe": "B",
+      "population": "uncontrolled_evening_htn",
+      "conditions": ["evening_bp_uncontrolled"],
+      "action": "switch_to_longer_acting",
+      "priority": "medium"
+    },
+    {
+      "id": "HTN8.11",
+      "text": "Bedtime dosing is recommended for uncontrolled morning hypertension.",
+      "text_zh": "晨間高血壓未控制者，建議睡前給藥。",
+      "category": "pharmacotherapy",
+      "cor": "IIa",
+      "loe": "B",
+      "population": "uncontrolled_morning_htn",
+      "conditions": ["morning_bp_uncontrolled"],
+      "action": "bedtime_dosing",
+      "priority": "medium"
+    },
+    {
+      "id": "HTN8.12",
+      "text": "Adding another antihypertensive drug is recommended for uncontrolled morning and evening hypertension.",
+      "text_zh": "晨間及傍晚血壓皆未控制者，建議加藥。",
+      "category": "pharmacotherapy",
+      "cor": "IIa",
+      "loe": "B",
+      "population": "uncontrolled_both",
+      "conditions": ["morning_bp_uncontrolled", "evening_bp_uncontrolled"],
+      "action": "add_antihypertensive",
+      "priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "title": "ESC/EAS 2025 Focused Update - Dyslipidaemia Management CDS Rules",
+  "title_zh": "ESC/EAS 2025 血脂異常管理指南 - 臨床決策支援規則",
+  "description": "Recommendations for LDL-C targets, lipid-lowering therapy, and Lp(a) screening based on ESC/EAS 2025 Guidelines",
+  "source": "2025 Focused Update of the 2019 ESC/EAS Guidelines for the management of dyslipidaemias",
+  "reference": "European Heart Journal (2025) 46, 4359-4378",
+  "total_recommendations": 15,
+  "cv_risk_categories": {
+    "very_high": {
+      "label": "極高風險",
+      "label_en": "Very High Risk",
+      "ldl_target_mg_dl": 55,
+      "ldl_reduction_percent": 50,
+      "criteria": [
+        "Documented ASCVD (clinical or imaging)",
+        "DM with target organ damage or ≥3 major risk factors",
+        "Severe CKD (eGFR <30)",
+        "SCORE2/SCORE2-OP ≥20%",
+        "FH with ASCVD or another major risk factor"
+      ]
+    },
+    "high": {
+      "label": "高風險",
+      "label_en": "High Risk",
+      "ldl_target_mg_dl": 70,
+      "criteria": [
+        "Markedly elevated single risk factors (TC >310 mg/dL, LDL >190 mg/dL, BP ≥180/110)",
+        "FH without other major risk factors",
+        "DM without target organ damage, duration ≥10 years or additional risk factor",
+        "Moderate CKD (eGFR 30-59)",
+        "SCORE2/SCORE2-OP ≥10% and <20%"
+      ]
+    },
+    "moderate": {
+      "label": "中等風險",
+      "label_en": "Moderate Risk",
+      "ldl_target_mg_dl": 100,
+      "criteria": [
+        "Young DM patients (<35y T1DM, <50y T2DM) with duration <10 years, no other risk factors",
+        "SCORE2/SCORE2-OP ≥2% and <10%"
+      ]
+    },
+    "low": {
+      "label": "低風險",
+      "label_en": "Low Risk",
+      "ldl_target_mg_dl": 116,
+      "criteria": [
+        "SCORE2/SCORE2-OP <2%"
+      ]
+    }
+  },
+  "sections": [
+    {
+      "section": 1,
+      "title": "LDL-C Target Evaluation",
+      "title_zh": "LDL-C 目標評估",
+      "recommendations": [
+        {
+          "id": "L1.1",
+          "text": "For patients at very high cardiovascular risk, an LDL-C goal of <55 mg/dL (<1.4 mmol/L) and ≥50% reduction from baseline is recommended.",
+          "text_zh": "極高心血管風險患者，建議 LDL-C 目標 <55 mg/dL 且較基線降低 ≥50%。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "ldl_target",
+          "population": "very_high_risk",
+          "action": "achieve_ldl_goal",
+          "criteria": {
+            "risk_level": "very_high",
+            "ldl_target": 55
+          }
+        },
+        {
+          "id": "L1.2",
+          "text": "For patients at high cardiovascular risk, an LDL-C goal of <70 mg/dL (<1.8 mmol/L) and ≥50% reduction from baseline is recommended.",
+          "text_zh": "高心血管風險患者，建議 LDL-C 目標 <70 mg/dL 且較基線降低 ≥50%。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "ldl_target",
+          "population": "high_risk",
+          "action": "achieve_ldl_goal",
+          "criteria": {
+            "risk_level": "high",
+            "ldl_target": 70
+          }
+        },
+        {
+          "id": "L1.3",
+          "text": "For patients at moderate cardiovascular risk, an LDL-C goal of <100 mg/dL (<2.6 mmol/L) should be considered.",
+          "text_zh": "中等心血管風險患者，建議考慮 LDL-C 目標 <100 mg/dL。",
+          "evidence_level": "A",
+          "class": "IIa",
+          "category": "ldl_target",
+          "population": "moderate_risk",
+          "action": "achieve_ldl_goal",
+          "criteria": {
+            "risk_level": "moderate",
+            "ldl_target": 100
+          }
+        },
+        {
+          "id": "L1.4",
+          "text": "For patients at low cardiovascular risk, an LDL-C goal of <116 mg/dL (<3.0 mmol/L) may be considered.",
+          "text_zh": "低心血管風險患者，可考慮 LDL-C 目標 <116 mg/dL。",
+          "evidence_level": "B",
+          "class": "IIb",
+          "category": "ldl_target",
+          "population": "low_risk",
+          "action": "consider_ldl_goal",
+          "criteria": {
+            "risk_level": "low",
+            "ldl_target": 116
+          }
+        },
+        {
+          "id": "L1.5",
+          "text": "For patients with ASCVD who experience recurrent vascular events or have polyvascular disease, an LDL-C goal of <40 mg/dL (<1.0 mmol/L) may be considered.",
+          "text_zh": "ASCVD 患者若有復發血管事件或多血管疾病，可考慮 LDL-C 目標 <40 mg/dL。",
+          "evidence_level": "B",
+          "class": "IIb",
+          "category": "ldl_target",
+          "population": "extreme_risk",
+          "action": "consider_aggressive_ldl_goal",
+          "criteria": {
+            "risk_level": "extreme",
+            "ldl_target": 40
+          }
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "title": "Pharmacological Treatment",
+      "title_zh": "藥物治療建議",
+      "recommendations": [
+        {
+          "id": "L2.1",
+          "text": "High-intensity statin therapy is recommended as the first-line treatment to achieve LDL-C goals in patients at high or very high cardiovascular risk.",
+          "text_zh": "高或極高心血管風險患者，建議高強度 statin 作為達成 LDL-C 目標的首選治療。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "statin_therapy",
+          "population": "high_very_high_risk",
+          "action": "initiate_high_intensity_statin"
+        },
+        {
+          "id": "L2.2",
+          "text": "If LDL-C goal is not achieved with the maximum tolerated dose of statin, combination with ezetimibe is recommended.",
+          "text_zh": "若使用最大耐受劑量 statin 仍未達 LDL-C 目標，建議合併 ezetimibe。",
+          "evidence_level": "B",
+          "class": "I",
+          "category": "combination_therapy",
+          "population": "not_at_goal_on_statin",
+          "action": "add_ezetimibe"
+        },
+        {
+          "id": "L2.3",
+          "text": "For very high-risk patients, if the LDL-C goal is not achieved with a maximum tolerated statin dose plus ezetimibe, combination with a PCSK9 inhibitor is recommended.",
+          "text_zh": "極高風險患者若使用最大耐受劑量 statin 加 ezetimibe 仍未達 LDL-C 目標，建議合併 PCSK9 抑制劑。",
+          "evidence_level": "A",
+          "class": "I",
+          "category": "combination_therapy",
+          "population": "very_high_risk_not_at_goal",
+          "action": "add_pcsk9_inhibitor"
+        },
+        {
+          "id": "L2.4",
+          "text": "Bempedoic acid is recommended in patients who are unable to take statin therapy to achieve the LDL-C goal.",
+          "text_zh": "無法耐受 statin 的患者，建議使用 bempedoic acid 以達成 LDL-C 目標。",
+          "evidence_level": "B",
+          "class": "I",
+          "category": "statin_alternative",
+          "population": "statin_intolerant",
+          "action": "use_bempedoic_acid"
+        },
+        {
+          "id": "L2.5",
+          "text": "The addition of bempedoic acid to the maximally tolerated dose of statin with or without ezetimibe should be considered in patients at high or very high risk in order to achieve the LDL-C goal.",
+          "text_zh": "高或極高風險患者，為達 LDL-C 目標，可考慮在最大耐受劑量 statin 及/或 ezetimibe 基礎上加用 bempedoic acid。",
+          "evidence_level": "C",
+          "class": "IIa",
+          "category": "combination_therapy",
+          "population": "high_very_high_risk_not_at_goal",
+          "action": "add_bempedoic_acid"
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "title": "Lipoprotein(a) Screening",
+      "title_zh": "脂蛋白(a) 篩檢",
+      "recommendations": [
+        {
+          "id": "L3.1",
+          "text": "Measurement of Lp(a) should be considered at least once in each adult's lifetime to identify those with very high inherited Lp(a) levels >180 mg/dL (>430 nmol/L) who may have a lifetime risk of ASCVD equivalent to the risk associated with heterozygous familial hypercholesterolaemia.",
+          "text_zh": "建議每位成人一生中至少測量一次 Lp(a)，以識別遺傳性極高 Lp(a) 者 (>180 mg/dL)，其終生 ASCVD 風險可能等同於異合子家族性高膽固醇血症。",
+          "evidence_level": "C",
+          "class": "IIa",
+          "category": "lpa_screening",
+          "population": "all_adults",
+          "action": "measure_lpa_once"
+        },
+        {
+          "id": "L3.2",
+          "text": "Lp(a) levels above 50 mg/dL (105 nmol/L) should be considered in all adults as a CV risk-enhancing factor, with higher Lp(a) levels associated with a greater increase in risk.",
+          "text_zh": "Lp(a) >50 mg/dL (105 nmol/L) 應被視為所有成人的心血管風險增強因子，Lp(a) 越高風險越高。",
+          "evidence_level": "B",
+          "class": "IIa",
+          "category": "lpa_risk",
+          "population": "elevated_lpa",
+          "action": "consider_lpa_as_risk_enhancer",
+          "criteria": {
+            "lpa_threshold_mg_dl": 50,
+            "lpa_threshold_nmol_l": 105
+          }
+        },
+        {
+          "id": "L3.3",
+          "text": "In patients with elevated Lp(a), more intensive LDL-C lowering should be considered to reduce overall cardiovascular risk.",
+          "text_zh": "Lp(a) 升高的患者，應考慮更積極地降低 LDL-C 以減少整體心血管風險。",
+          "evidence_level": "C",
+          "class": "IIa",
+          "category": "lpa_management",
+          "population": "elevated_lpa",
+          "action": "intensify_ldl_lowering"
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "title": "Special Populations",
+      "title_zh": "特殊族群",
+      "recommendations": [
+        {
+          "id": "L4.1",
+          "text": "Intensification of lipid-lowering therapy during the index ACS hospitalization is recommended for patients who were on any lipid-lowering therapy before admission in order to further lower LDL-C levels.",
+          "text_zh": "急性冠心症住院期間，若患者入院前已使用降脂藥物，建議強化降脂治療以進一步降低 LDL-C。",
+          "evidence_level": "C",
+          "class": "I",
+          "category": "acs_therapy",
+          "population": "acs_patients",
+          "action": "intensify_lipid_therapy_acs"
+        },
+        {
+          "id": "L4.2",
+          "text": "Initiating combination therapy with high-intensity statin plus ezetimibe during index hospitalization for ACS should be considered in patients who were treatment-naïve and are not expected to achieve the LDL-C goal with statin therapy alone.",
+          "text_zh": "急性冠心症住院期間，未曾接受降脂治療且預期單用 statin 無法達 LDL-C 目標者，應考慮起始高強度 statin 加 ezetimibe 合併治療。",
+          "evidence_level": "B",
+          "class": "IIa",
+          "category": "acs_therapy",
+          "population": "acs_treatment_naive",
+          "action": "initiate_combination_acs"
+        }
+      ]
+    }
+  ],
+  "ldl_reduction_by_therapy": {
+    "description": "Average LDL-C reduction with different pharmacological therapies",
+    "therapies": [
+      { "name": "Moderate-intensity statin", "reduction_percent": 30 },
+      { "name": "High-intensity statin", "reduction_percent": 50 },
+      { "name": "Ezetimibe", "reduction_percent": 20 },
+      { "name": "Bempedoic acid", "reduction_percent": 23 },
+      { "name": "Ezetimibe + Bempedoic acid", "reduction_percent": 38 },
+      { "name": "High-intensity statin + Ezetimibe", "reduction_percent": 60 },
+      { "name": "High-intensity statin + Ezetimibe + Bempedoic acid", "reduction_percent": 68 },
+      { "name": "PCSK9 mAb", "reduction_percent": 60 },
+      { "name": "High-intensity statin + PCSK9 mAb", "reduction_percent": 75 },
+      { "name": "High-intensity statin + Ezetimibe + PCSK9 mAb", "reduction_percent": 85 }
+    ]
+  }
+}
