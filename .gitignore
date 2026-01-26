@@ -1,5 +1,5 @@
 # API Keys and secrets
-config.js
+# config.js is now safe to commit (only contains endpoint URL, not API key)
 
 # Dependencies
 node_modules/
